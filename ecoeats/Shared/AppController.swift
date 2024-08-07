@@ -7,14 +7,16 @@
 
 import Foundation
 import Amplify
+import SwiftUI
 
 class AppController: ObservableObject {
     @Published var appState: AppState = .onboarding
     @Published var isLoading: Bool = false
+    @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
     
     func getCurrentAuthSession() {
         isLoading = true
-        if Defaults.isAppOnboarded {
+        if isAppOnboarded {
             Task {
                 do {
                     let session = try await Amplify.Auth.fetchAuthSession()
