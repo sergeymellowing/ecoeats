@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Main: View {
-    @State var state: MainState = .map
+    @EnvironmentObject var dataController: DataController
+    @State var state: MainState = .list
     
     var body: some View {
         NavigationView {
@@ -31,6 +32,9 @@ struct Main: View {
             }
             .navigationTitle(Text("MAIN"))
             .navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear {
+            dataController.getData()
         }
     }
 }

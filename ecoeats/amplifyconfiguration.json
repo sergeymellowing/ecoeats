@@ -1,0 +1,55 @@
+{
+    "auth": {
+        "plugins": {
+            "awsCognitoAuthPlugin": {
+                "IdentityManager": {
+                    "Default": {}
+                },
+                "CredentialsProvider": {
+                    "CognitoIdentity": {
+                        "Default": {
+                            "PoolId": "ap-northeast-2:e3e3fd67-37e5-4414-8dfd-d10212b73980",
+                            "Region": "ap-northeast-2"
+                        }
+                    }
+                },
+                "CognitoUserPool": {
+                    "Default": {
+                        "PoolId": "ap-northeast-2_j96syhJCn",
+                        "AppClientId": "6b4rl4hjbpp2r787vua0tesjjg",
+                        "AppClientSecret": "1s8sbbppplti1gb7aa145tvpktifopaee788pl5k21a5lqciqo11",
+                        "Region": "ap-northeast-2"
+                    }
+                },
+                "Auth": {
+                    "Default": {
+                        "authenticationFlowType": "USER_SRP_AUTH",
+                        "OAuth": {
+                            "WebDomain": "ecoeats.auth.ap-northeast-2.amazoncognito.com",
+                            "AppClientId": "6b4rl4hjbpp2r787vua0tesjjg",
+                            "AppClientSecret": "1s8sbbppplti1gb7aa145tvpktifopaee788pl5k21a5lqciqo11",
+                            "SignInRedirectURI": "myapp://",
+                            "SignOutRedirectURI": "myapp://",
+                            "Scopes": [
+                                "email",
+                                "openid"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "api": {
+        "plugins": {
+            "awsAPIPlugin": {
+                "DeviceApi": {
+                    "endpointType": "REST",
+                    "endpoint": "https://9w88ibphh6.execute-api.ap-northeast-2.amazonaws.com/dev",
+                    "region": "ca-central-1",
+                    "authorizationType": "AMAZON_COGNITO_USER_POOLS"
+                }
+            }
+        }
+    }
+}

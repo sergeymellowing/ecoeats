@@ -9,12 +9,14 @@ import SwiftUI
 
 struct Onboarding: View {
     @EnvironmentObject var appController: AppController
+    @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
+    
     var body: some View {
         NavigationView {
             Text("ONBOARDING")
                 .navigationBarItems(trailing:
                                         Button(action: {
-                    appController.appState = .signin
+                    self.isAppOnboarded = true
                 }) {
                     Text("skip")
                 }
@@ -26,6 +28,3 @@ struct Onboarding: View {
 #Preview {
     Onboarding()
 }
-
-// init
-

@@ -12,9 +12,9 @@ struct SignIn: View {
     
     var body: some View {
         Text("Sign In")
-            .onTapGesture {
-                appController.appState = .main
-            }
+//            .onTapGesture {
+//                appController.appState = .main
+//            }
     }
 }
 

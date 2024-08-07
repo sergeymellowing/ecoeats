@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Store {
+struct Store: Identifiable {
     let id: String
+    let imageUrl: String
     let lat: Float
     let lng: Float
     let name: String

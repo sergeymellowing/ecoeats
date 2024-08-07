@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var appController = AppController()
-    
+    @StateObject var dataController = DataController()
     
     var body: some View {
         ZStack {
@@ -23,6 +23,10 @@ struct ContentView: View {
             }
         }
         .environmentObject(appController)
+        .environmentObject(dataController)
+        .onAppear {
+            appController.getCurrentAuthSession()
+        }
     }
 }
 
