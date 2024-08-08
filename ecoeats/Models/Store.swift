@@ -6,16 +6,32 @@
 //
 
 import Foundation
+import MapKit
 
-struct Store: Identifiable {
+struct Store: Identifiable, Codable {
     let id: String
-    let imageUrl: String
-    let lat: Float
-    let lng: Float
-    let name: String
-    let description: String
-    let phone: Int
+    let storeName: String
     let address: String
-    let openHours: String
+    let phoneNumber: String
+    let isOpen: Bool
+    let openTime: String
+    let closeTime: String
+    let description: String
+    let location: Location
     let items: [Item]
+}
+
+struct Location: Codable {
+    let latitude: Float
+    let longitude: Float
+}
+
+struct GetStoresResponse: Codable {
+    var data: [Store]
+}
+
+struct StorePin: Identifiable {
+    let id = UUID()
+    let name: String
+    let coordinate: CLLocationCoordinate2D
 }

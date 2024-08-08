@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Item {
-    let id: String
-    let name: String
+struct Item: Codable {
+    let itemId: Int
+    let itemName: String
     let description: String
+    let quantity: Int
+    let imageUrl: String
     let price: Float
     let discount: Int
-    let amount: Int
-    let imageUrl: String
 }

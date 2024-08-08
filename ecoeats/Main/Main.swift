@@ -21,20 +21,36 @@ struct Main: View {
                     MainListView()
                 }
                 
-                Picker("", selection: $state) {
-                    ForEach(MainState.allCases) {
-                        Text($0.description)
-                    }
+                ZStack {
+                    HStack {
+                        Picker("", selection: $state) {
+                            ForEach(MainState.allCases) {
+                                Text($0.description)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .frame(width: UIScreen.main.bounds.width / 3)
+                    }.frame(maxWidth: .infinity, alignment: .center)
+                    HStack {
+                        NavigationLink(destination: {
+                            Text("Account View")
+                        }) {
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.black)
+                                .frame(width: 30)
+                        }
+                    }.frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .pickerStyle(.segmented)
-                .background(.white)
                 .padding()
             }
-            .navigationTitle(Text("MAIN"))
+//            .navigationTitle(Text("MAIN"))
             .navigationBarTitleDisplayMode(.inline)
         }
+        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            dataController.getData()
+            dataController.getStores { error in }
         }
     }
 }

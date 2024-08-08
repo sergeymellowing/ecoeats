@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "cachedasyncimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bullinnyc/CachedAsyncImage.git",
+      "state" : {
+        "revision" : "cb253e111528c082381af54b67dab7a15eefde16",
+        "version" : "2.6.0"
+      }
+    },
+    {
       "identity" : "smithy-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/smithy-lang/smithy-swift",

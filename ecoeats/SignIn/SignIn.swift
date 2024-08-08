@@ -11,7 +11,12 @@ struct SignIn: View {
     @EnvironmentObject var appController: AppController
     
     var body: some View {
-        Text("Sign In")
+        Button(action: {
+            appController.signIn(email: "sevastiyan.tsv@gmail.com", password: "myPassword1")
+        }) {
+            Text("Sign In")
+        }
+        .buttonStyle(.bordered)
 //            .onTapGesture {
 //                appController.appState = .main
 //            }

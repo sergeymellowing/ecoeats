@@ -43,7 +43,7 @@
     "api": {
         "plugins": {
             "awsAPIPlugin": {
-                "DeviceApi": {
+                "storeApi": {
                     "endpointType": "REST",
                     "endpoint": "https://9w88ibphh6.execute-api.ap-northeast-2.amazonaws.com/dev",
                     "region": "ca-central-1",

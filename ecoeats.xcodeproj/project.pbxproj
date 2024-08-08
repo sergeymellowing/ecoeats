@@ -33,6 +33,8 @@
 		85D28E3D2C635B58008D5F15 /* AWSLocationGeoPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 85D28E3C2C635B58008D5F15 /* AWSLocationGeoPlugin */; };
 		85D28E3F2C635CF0008D5F15 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 85D28E3E2C635CF0008D5F15 /* amplifyconfiguration.json */; };
 		85D28E412C636009008D5F15 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D28E402C636009008D5F15 /* Defaults.swift */; };
+		85D28E472C64978F008D5F15 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D28E462C64978F008D5F15 /* JsonHelper.swift */; };
+		85D28E4D2C64A2D9008D5F15 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 85D28E4C2C64A2D9008D5F15 /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,7 @@
 		85891C662C6355A20039380F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		85D28E3E2C635CF0008D5F15 /* amplifyconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		85D28E402C636009008D5F15 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		85D28E462C64978F008D5F15 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,7 @@
 				85D28E352C635B58008D5F15 /* AWSAPIPlugin in Frameworks */,
 				85D28E3D2C635B58008D5F15 /* AWSLocationGeoPlugin in Frameworks */,
 				85D28E372C635B58008D5F15 /* AWSCloudWatchLoggingPlugin in Frameworks */,
+				85D28E4D2C64A2D9008D5F15 /* CachedAsyncImage in Frameworks */,
 				85D28E392C635B58008D5F15 /* AWSCognitoAuthPlugin in Frameworks */,
 				85D28E3B2C635B58008D5F15 /* AWSDataStorePlugin in Frameworks */,
 			);
@@ -172,6 +176,7 @@
 				85891C512C61FD4C0039380F /* AppController.swift */,
 				85891C662C6355A20039380F /* DataController.swift */,
 				85D28E402C636009008D5F15 /* Defaults.swift */,
+				85D28E462C64978F008D5F15 /* JsonHelper.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				85D28E382C635B58008D5F15 /* AWSCognitoAuthPlugin */,
 				85D28E3A2C635B58008D5F15 /* AWSDataStorePlugin */,
 				85D28E3C2C635B58008D5F15 /* AWSLocationGeoPlugin */,
+				85D28E4C2C64A2D9008D5F15 /* CachedAsyncImage */,
 			);
 			productName = ecoeats;
 			productReference = 85891C2E2C61F8A70039380F /* ecoeats.app */;
@@ -237,6 +243,7 @@
 			mainGroup = 85891C252C61F8A70039380F;
 			packageReferences = (
 				85D28E332C635B58008D5F15 /* XCRemoteSwiftPackageReference "amplify-swift" */,
+				85D28E4B2C64A2D9008D5F15 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
 			);
 			productRefGroup = 85891C2F2C61F8A70039380F /* Products */;
 			projectDirPath = "";
@@ -275,6 +282,7 @@
 				85891C522C61FD4C0039380F /* AppController.swift in Sources */,
 				85891C462C61FC060039380F /* Onboarding.swift in Sources */,
 				85891C562C6200150039380F /* MainListView.swift in Sources */,
+				85D28E472C64978F008D5F15 /* JsonHelper.swift in Sources */,
 				85891C5C2C633ED40039380F /* Store.swift in Sources */,
 				85891C342C61F8A70039380F /* ContentView.swift in Sources */,
 				85D28E412C636009008D5F15 /* Defaults.swift in Sources */,
@@ -500,6 +508,14 @@
 				minimumVersion = 2.36.0;
 			};
 		};
+		85D28E4B2C64A2D9008D5F15 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bullinnyc/CachedAsyncImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -527,6 +543,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85D28E332C635B58008D5F15 /* XCRemoteSwiftPackageReference "amplify-swift" */;
 			productName = AWSLocationGeoPlugin;
+		};
+		85D28E4C2C64A2D9008D5F15 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D28E4B2C64A2D9008D5F15 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
+			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
