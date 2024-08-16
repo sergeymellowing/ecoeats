@@ -27,7 +27,7 @@ struct MapView: View {
     var body: some View {
         let annotations = dataController.stores
         
-        Map(coordinateRegion: $mainScreenController.region, annotationItems: annotations) { store in
+            Map(coordinateRegion: $mainScreenController.region, showsUserLocation: true, annotationItems: annotations) { store in
             //            MapPin(coordinate: $0.coordinate)
             //            Marker("$0.name", coordinate: $0.coordinate)
             //            MapMarker(coordinate: $0.coordinate)
@@ -42,6 +42,7 @@ struct MapView: View {
                 }
             }
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
