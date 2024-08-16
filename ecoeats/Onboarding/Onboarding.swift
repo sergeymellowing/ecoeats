@@ -17,7 +17,10 @@ struct Onboarding: View {
                 .navigationBarItems(trailing:
                                         Button(action: {
                     DispatchQueue.main.async {
-                        self.isAppOnboarded = true
+                        withAnimation {
+                            self.isAppOnboarded = true
+                            appController.appState = .signin
+                        }
                     }
                 }) {
                     Text("skip")

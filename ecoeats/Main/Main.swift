@@ -9,12 +9,14 @@ import SwiftUI
 
 struct Main: View {
     @EnvironmentObject var dataController: DataController
-    @State var state: MainState = .list
+    @EnvironmentObject var appController: AppController
+    @StateObject var mainScreenController = MainScreenController()
+    @StateObject var locationManager = LocationManager()
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                switch state {
+                switch mainScreenController.state {
                 case .map:
                     MapView()
                 case .list:
@@ -23,7 +25,7 @@ struct Main: View {
                 
                 ZStack {
                     HStack {
-                        Picker("", selection: $state) {
+                        Picker("", selection: $mainScreenController.state) {
                             ForEach(MainState.allCases) {
                                 Text($0.description)
                             }
@@ -33,7 +35,13 @@ struct Main: View {
                     }.frame(maxWidth: .infinity, alignment: .center)
                     HStack {
                         NavigationLink(destination: {
-                            Text("Account View")
+                            VStack(spacing: 20) {
+                                Text("Account View")
+                                Button(action: { appController.signOut() }) {
+                                    Text("Sign out")
+                                }
+                                .buttonStyle(.bordered)
+                            }
                         }) {
                             Image(systemName: "person.circle.fill")
                                 .resizable()
@@ -48,10 +56,12 @@ struct Main: View {
 //            .navigationTitle(Text("MAIN"))
             .navigationBarTitleDisplayMode(.inline)
         }
-        .edgesIgnoringSafeArea(.bottom)
+//        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             dataController.getStores { error in }
         }
+        .environmentObject(mainScreenController)
+        .environmentObject(locationManager)
     }
 }
 

@@ -8,11 +8,13 @@
 import Foundation
 import Amplify
 import SwiftUI
+import AWSCognitoAuthPlugin
 
 class AppController: ObservableObject {
     @Published var appState: AppState = .onboarding
     @Published var isLoading: Bool = false
     @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
+    @AppStorage("lookAround") private var lookAround = Defaults.lookAround
     
     func getCurrentAuthSession() {
         isLoading = true
@@ -28,8 +30,14 @@ class AppController: ObservableObject {
                     } else {
                         print("User not logged in")
                         await MainActor.run {
-                            self.appState = .signin
-                            isLoading = false
+                            if lookAround {
+                                self.appState = .main
+                                isLoading = false
+                            } else {
+                                self.appState = .signin
+                                isLoading = false
+                            }
+                            
                         }
                     }
                 } catch let error as AuthError {
@@ -125,5 +133,67 @@ class AppController: ObservableObject {
         }
     }
     
+    @MainActor
+    func signOut() {
+        Task {
+            self.isLoading = true
+            _ = await Amplify.Auth.signOut()
+            print("Sign out succeeded")
+            self.lookAround = false
+            self.appState = .signin
+        }
+    }
     
+    func signInWithWebUI(provider: AuthProvider) {
+        var window: UIWindow {
+            guard
+                let scene = UIApplication.shared.connectedScenes.first,
+                let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+                let window = windowSceneDelegate.window as? UIWindow
+            else {
+                return UIWindow()
+            }
+            return window
+        }
+        
+        let options = AuthWebUISignInRequest.Options(
+            scopes: ["email", "openid", "aws.cognito.signin.user.admin"],
+            pluginOptions: AWSAuthWebUISignInOptions(preferPrivateSession: true)
+        )
+        self.isLoading = true
+        // MARK: @MainActor needs to use computing variable window
+        Task.detached { @MainActor in
+            do {
+                let signInWithWebUIResult = try await Amplify.Auth.signInWithWebUI(for: provider, presentationAnchor: window, options: options)
+                
+                switch signInWithWebUIResult.nextStep {
+                case .done:
+                    let username = try await Amplify.Auth.getCurrentUser().username
+                    
+                    switch provider {
+                    case .apple:
+                        Defaults.signInProvider = "apple"
+                    case .facebook:
+                        Defaults.signInProvider = "facebook"
+                    case .google:
+                        Defaults.signInProvider = "google"
+                    default:
+                        Defaults.signInProvider = "other"
+                    }
+                    
+//                    self.userService.syncAuthAndApiUser(username: username) { success in
+//                        print("User sync success \(success)")
+//                        Defaults.autoLoginEnabled = true
+//                        self.isUserOnboardingCompleted = false
+//                    }
+                    self.getCurrentAuthSession()
+                default: print("undone")
+                }
+            } catch {
+                self.getCurrentAuthSession()
+                print("Sign in failed: \(error)")
+            }
+            self.isLoading = false
+        }
+    }
 }

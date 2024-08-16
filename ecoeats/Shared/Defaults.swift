@@ -16,4 +16,22 @@ class Defaults {
             UserDefaults.standard.set(newValue, forKey: "isAppOnboarded")
         }
     }
+    
+    static var signInProvider: String {
+        get {
+            return UserDefaults.standard.string(forKey: "signInProvider") ?? "email"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "signInProvider")
+        }
+    }
+    
+    static var lookAround: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "lookAround")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "lookAround")
+        }
+    }
 }

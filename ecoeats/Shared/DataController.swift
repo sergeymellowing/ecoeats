@@ -10,34 +10,64 @@ import Amplify
 
 class DataController: ObservableObject {
     @Published var stores: [Store] = []
+    @AppStorage("lookAround") private var lookAround = Defaults.lookAround
     
 //    func getData() {
 //        self.stores = DummyData.storeList
 //    }
     
     func getStores(completion: @escaping (String?) -> Void) {
-        let request = RESTRequest(apiName: "storeApi",
-                                  path: "/stores/get")
-        
-        Task {
-            do {
-                let data = try await Amplify.API.get(request: request)
-                let str = String(decoding: data, as: UTF8.self)
-                print("Get Store success \(str)")
-                print(data.description)
-                if let response: GetStoresResponse = decodeJson(data: data) {
-                    await MainActor.run {
-                        self.stores = response.data
+        if lookAround {
+            let url = URL(string: "\(Statics.domain)stores/get")!
+            
+            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                guard let data = data else { return }
+                print(String(data: data, encoding: .utf8)!)
+                do {
+                    if let response: GetStoresResponse = decodeJson(data: data) {
+                        //                    await MainActor.run {
+                        DispatchQueue.main.async {
+                            self.stores = response.data
+                        }
+                        
+                        //                    }
+                        completion(response.data.isEmpty ?
+                                   "GetStoresResponse error" :
+                                    nil)
+                    } else {
+                        completion("Error: Invalid Json")
                     }
-                    completion(response.data.isEmpty ?
-                        "GetStoresResponse error" :
-                            nil)
-                } else {
-                    completion("Error: Invalid Json")
                 }
-            } catch {
-                print("Get Store failure \(error)")
-                completion(error.localizedDescription)
+            }
+            
+            task.resume()
+        } else {
+            let request = RESTRequest(apiName: "storeApi",
+                                      path: "/stores/get")
+            
+            //        let request = RESTRequest(apiName: "storeApi",
+            //                    path: "/stores/get",
+            //                    headers: [:])
+            Task {
+                do {
+                    let data = try await Amplify.API.get(request: request)
+                    let str = String(decoding: data, as: UTF8.self)
+                    print("Get Store success \(str)")
+                    print(data.description)
+                    if let response: GetStoresResponse = decodeJson(data: data) {
+                        await MainActor.run {
+                            self.stores = response.data
+                        }
+                        completion(response.data.isEmpty ?
+                                   "GetStoresResponse error" :
+                                    nil)
+                    } else {
+                        completion("Error: Invalid Json")
+                    }
+                } catch {
+                    print("Get Store failure: \(error)")
+                    completion(error.localizedDescription)
+                }
             }
         }
     }

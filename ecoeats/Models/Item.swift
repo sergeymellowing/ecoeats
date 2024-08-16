@@ -8,6 +8,7 @@
 import Foundation
 
 struct Item: Codable {
+//    var id = UUID()
     let itemId: Int
     let itemName: String
     let description: String
@@ -15,4 +16,8 @@ struct Item: Codable {
     let imageUrl: String
     let price: Float
     let discount: Int
+}
+
+extension Item: Identifiable {
+    var id: String { itemId.description }
 }

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8553E0F92C6EE52C00C56635 /* StoreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0F82C6EE52C00C56635 /* StoreRow.swift */; };
+		8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FA2C6EE57100C56635 /* StoreDetails.swift */; };
+		8553E0FD2C6EE94F00C56635 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */; };
+		8553E0FF2C6EF27800C56635 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FE2C6EF27800C56635 /* ItemRow.swift */; };
+		8553E1012C6EF86A00C56635 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E1002C6EF86A00C56635 /* Statics.swift */; };
+		8553E1032C6EFA4000C56635 /* ItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E1022C6EFA4000C56635 /* ItemDetails.swift */; };
+		8553E1052C6F034300C56635 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E1042C6F034300C56635 /* LocationManager.swift */; };
+		8553E1082C6F03B900C56635 /* DistanceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E1072C6F03B900C56635 /* DistanceString.swift */; };
 		85891C322C61F8A70039380F /* ecoeatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85891C312C61F8A70039380F /* ecoeatsApp.swift */; };
 		85891C342C61F8A70039380F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85891C332C61F8A70039380F /* ContentView.swift */; };
 		85891C362C61F8A90039380F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85891C352C61F8A90039380F /* Assets.xcassets */; };
@@ -38,6 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8553E0F82C6EE52C00C56635 /* StoreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRow.swift; sourceTree = "<group>"; };
+		8553E0FA2C6EE57100C56635 /* StoreDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetails.swift; sourceTree = "<group>"; };
+		8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
+		8553E0FE2C6EF27800C56635 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
+		8553E1002C6EF86A00C56635 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
+		8553E1022C6EFA4000C56635 /* ItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetails.swift; sourceTree = "<group>"; };
+		8553E1042C6F034300C56635 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		8553E1072C6F03B900C56635 /* DistanceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceString.swift; sourceTree = "<group>"; };
 		85891C2E2C61F8A70039380F /* ecoeats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ecoeats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85891C312C61F8A70039380F /* ecoeatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ecoeatsApp.swift; sourceTree = "<group>"; };
 		85891C332C61F8A70039380F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8553E1062C6F03A300C56635 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				8553E1072C6F03B900C56635 /* DistanceString.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		85891C252C61F8A70039380F = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +130,7 @@
 				85891C412C61FAAE0039380F /* Main */,
 				85891C422C61FAC00039380F /* Settings */,
 				85891C502C61FD320039380F /* Shared */,
+				8553E1062C6F03A300C56635 /* Elements */,
 				85891C4D2C61FC8C0039380F /* Models */,
 				85891C5F2C6340BD0039380F /* Data */,
 				85891C352C61F8A90039380F /* Assets.xcassets */,
@@ -146,6 +171,11 @@
 				85891C492C61FC560039380F /* Main.swift */,
 				85891C532C6200090039380F /* MapView.swift */,
 				85891C552C6200150039380F /* MainListView.swift */,
+				8553E0F82C6EE52C00C56635 /* StoreRow.swift */,
+				8553E0FA2C6EE57100C56635 /* StoreDetails.swift */,
+				8553E0FE2C6EF27800C56635 /* ItemRow.swift */,
+				8553E1022C6EFA4000C56635 /* ItemDetails.swift */,
+				8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -177,6 +207,8 @@
 				85891C662C6355A20039380F /* DataController.swift */,
 				85D28E402C636009008D5F15 /* Defaults.swift */,
 				85D28E462C64978F008D5F15 /* JsonHelper.swift */,
+				8553E1002C6EF86A00C56635 /* Statics.swift */,
+				8553E1042C6F034300C56635 /* LocationManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -275,11 +307,17 @@
 			files = (
 				85891C582C62005D0039380F /* MainState.swift in Sources */,
 				85891C4C2C61FC620039380F /* Settings.swift in Sources */,
+				8553E1052C6F034300C56635 /* LocationManager.swift in Sources */,
 				85891C4A2C61FC560039380F /* Main.swift in Sources */,
 				85891C612C6340CF0039380F /* TestData.swift in Sources */,
 				85891C4F2C61FC9B0039380F /* AppState.swift in Sources */,
+				8553E0F92C6EE52C00C56635 /* StoreRow.swift in Sources */,
+				8553E1082C6F03B900C56635 /* DistanceString.swift in Sources */,
 				85891C5E2C63407E0039380F /* Item.swift in Sources */,
 				85891C522C61FD4C0039380F /* AppController.swift in Sources */,
+				8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */,
+				8553E1032C6EFA4000C56635 /* ItemDetails.swift in Sources */,
+				8553E1012C6EF86A00C56635 /* Statics.swift in Sources */,
 				85891C462C61FC060039380F /* Onboarding.swift in Sources */,
 				85891C562C6200150039380F /* MainListView.swift in Sources */,
 				85D28E472C64978F008D5F15 /* JsonHelper.swift in Sources */,
@@ -288,7 +326,9 @@
 				85D28E412C636009008D5F15 /* Defaults.swift in Sources */,
 				85891C5A2C633EA80039380F /* User.swift in Sources */,
 				85891C322C61F8A70039380F /* ecoeatsApp.swift in Sources */,
+				8553E0FD2C6EE94F00C56635 /* MainScreenController.swift in Sources */,
 				85891C672C6355A20039380F /* DataController.swift in Sources */,
+				8553E0FF2C6EF27800C56635 /* ItemRow.swift in Sources */,
 				85891C542C6200090039380F /* MapView.swift in Sources */,
 				85891C482C61FC450039380F /* SignIn.swift in Sources */,
 			);
@@ -427,6 +467,8 @@
 				DEVELOPMENT_TEAM = 6S83TJN3P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -457,6 +499,8 @@
 				DEVELOPMENT_TEAM = 6S83TJN3P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

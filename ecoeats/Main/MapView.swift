@@ -15,29 +15,32 @@ extension CLLocationCoordinate2D: Identifiable {
 }
 
 struct MapView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.55, longitude: 126.99), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var mainScreenController: MainScreenController
 
-    let annotations = [
-        StorePin(name: "London", coordinate: CLLocationCoordinate2D(latitude: 37.507222, longitude: 126.99)),
-        StorePin(name: "Paris", coordinate: CLLocationCoordinate2D(latitude: 37.2567, longitude: 126.79)),
-        StorePin(name: "Rome", coordinate: CLLocationCoordinate2D(latitude: 37.0, longitude: 127.0)),
-        ]
+//    [
+//        StorePin(name: "London", coordinate: CLLocationCoordinate2D(latitude: 37.507222, longitude: 126.99)),
+//        StorePin(name: "Paris", coordinate: CLLocationCoordinate2D(latitude: 37.2567, longitude: 126.79)),
+//        StorePin(name: "Rome", coordinate: CLLocationCoordinate2D(latitude: 37.0, longitude: 127.0)),
+//        ]
     
     var body: some View {
-//        Map()
-        Map(coordinateRegion: $region, annotationItems: annotations) {
-//            MapPin(coordinate: $0.coordinate)
+        let annotations = dataController.stores
+        
+        Map(coordinateRegion: $mainScreenController.region, annotationItems: annotations) { store in
+            //            MapPin(coordinate: $0.coordinate)
+            //            Marker("$0.name", coordinate: $0.coordinate)
+            //            MapMarker(coordinate: $0.coordinate)
             
-//            MapMarker(coordinate: $0.coordinate)
-            MapAnnotation(coordinate: $0.coordinate) {
-                Circle()
-                        .strokeBorder(.red, lineWidth: 4)
-                        .frame(width: 40, height: 40)
-                        .onTapGesture {
-                            print("BOO")
-                        }
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(store.location.latitude), longitude: CLLocationDegrees(store.location.longitude))) {
+                NavigationLink(destination: {
+                    StoreDetails(store: store)
+                }) {
+                    Circle()
+                        .strokeBorder(.red, lineWidth: 2)
+                        .frame(width: 20, height: 20)
+                }
             }
-//            Marker("$0.name", coordinate: $0.coordinate)
         }
     }
 }
