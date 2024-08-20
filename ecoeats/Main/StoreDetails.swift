@@ -10,6 +10,7 @@ import CachedAsyncImage
 
 struct StoreDetails: View {
     @EnvironmentObject var mainScreenController: MainScreenController
+    @EnvironmentObject var appController: AppController
     @EnvironmentObject var locationManager: LocationManager
     @State var selectedItem: Item? = nil
     
@@ -75,12 +76,14 @@ struct StoreDetails: View {
                 ForEach(store.items) { item in
                     ItemRow(item: item)
                         .onTapGesture {
-                            self.selectedItem = item
+                            if appController.apiUser != nil {
+                                self.selectedItem = item
+                            }
                         }
                     Divider()
                 }
                 .sheet(item: $selectedItem) { item in
-                    ItemDetails(item: item)
+                    ItemDetails(item: item, store: store)
                 }
                 Spacer(minLength: 200)
             }

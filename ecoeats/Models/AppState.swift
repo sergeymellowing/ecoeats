@@ -8,5 +8,5 @@
 import Foundation
 
 enum AppState {
-    case onboarding, signin, main
+    case onboarding, signin, main, isAdmin
 }

@@ -33,15 +33,10 @@ struct Main: View {
                         .pickerStyle(.segmented)
                         .frame(width: UIScreen.main.bounds.width / 3)
                     }.frame(maxWidth: .infinity, alignment: .center)
+                    
                     HStack {
                         NavigationLink(destination: {
-                            VStack(spacing: 20) {
-                                Text("Account View")
-                                Button(action: { appController.signOut() }) {
-                                    Text("Sign out")
-                                }
-                                .buttonStyle(.bordered)
-                            }
+                            AccountView()
                         }) {
                             Image(systemName: "person.circle.fill")
                                 .resizable()
@@ -58,7 +53,7 @@ struct Main: View {
         }
 //        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            dataController.getStores { error in }
+            dataController.getStores(lookAround: appController.apiUser == nil) { error in }
         }
         .environmentObject(mainScreenController)
         .environmentObject(locationManager)

@@ -9,7 +9,7 @@ import Foundation
 
 struct Item: Codable {
 //    var id = UUID()
-    let itemId: Int
+    let itemId: String
     let itemName: String
     let description: String
     let quantity: Int
@@ -19,5 +19,5 @@ struct Item: Codable {
 }
 
 extension Item: Identifiable {
-    var id: String { itemId.description }
+    var id: String { itemId }
 }

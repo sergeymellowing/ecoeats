@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainListView: View {
     @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var appController: AppController
     
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct MainListView: View {
             }.refreshable(action: {
                 withAnimation {
                     dataController.stores = []
-                    dataController.getStores { error in }
+                    dataController.getStores(lookAround: appController.apiUser == nil) { error in }
                 }
             })
             

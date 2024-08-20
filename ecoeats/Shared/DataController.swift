@@ -10,15 +10,14 @@ import Amplify
 
 class DataController: ObservableObject {
     @Published var stores: [Store] = []
-    @AppStorage("lookAround") private var lookAround = Defaults.lookAround
     
 //    func getData() {
 //        self.stores = DummyData.storeList
 //    }
     
-    func getStores(completion: @escaping (String?) -> Void) {
+    func getStores(lookAround: Bool, completion: @escaping (String?) -> Void) {
         if lookAround {
-            let url = URL(string: "\(Statics.domain)stores/get")!
+            let url = URL(string: "\(Const.domain)stores/get")!
             
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 guard let data = data else { return }
@@ -96,6 +95,36 @@ class DataController: ObservableObject {
 //                }
             } catch {
                 print("Get Store failure \(error)")
+                completion(error.localizedDescription)
+            }
+        }
+    }
+    
+    func checkQR(storeId: String, itemId: String, userId: String, completion: @escaping (String?) -> Void) {
+        let queryParameters = ["userId": userId, "storeId": storeId, "itemId": itemId]
+        let request = RESTRequest(apiName: "storeApi",
+                                  path: "/qr/check/",
+                                  queryParameters: queryParameters)
+        
+        Task {
+            do {
+                let data = try await Amplify.API.get(request: request)
+                let str = String(decoding: data, as: UTF8.self)
+                print("Check QR: \(str)")
+                print(data.description)
+                
+//                self.stores.append(<#T##newElement: Store##Store#>)
+                completion(nil)
+//                if let response: GetIotDeviceResponse = decodeJson(data: data) {
+//                    // todo(florian) for now we only return the first device in list
+//                    completion(response.data.isEmpty ?
+//                        .failure(ApiError.notFound) :
+//                            .success(response.data.first!))
+//                } else {
+//                    completion(.failure(ApiError.invalidJSON))
+//                }
+            } catch {
+                print("Check QR failure \(error)")
                 completion(error.localizedDescription)
             }
         }

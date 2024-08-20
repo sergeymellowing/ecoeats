@@ -21,6 +21,8 @@ struct ContentView: View {
                 SignIn()
             case .main:
                 Main()
+            case .isAdmin:
+                ScannerView()
             }
         }
         .environmentObject(appController)

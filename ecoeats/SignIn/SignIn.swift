@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignIn: View {
     @EnvironmentObject var appController: AppController
-    @AppStorage("lookAround") private var lookAround = Defaults.lookAround
     
     var body: some View {
         VStack(spacing: 30) {
@@ -35,7 +34,6 @@ struct SignIn: View {
             
             Button(action: {
                 withAnimation {
-                    self.lookAround = true
                     appController.appState = .main
                 }
             }) {
