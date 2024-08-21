@@ -85,7 +85,7 @@ struct ItemDetails: View {
                 } else {
                     let qrcodeDoc: QRCode.Document = {
                         let doc = QRCode.Document()
-                        doc.utf8String = store.id + item.id + userId
+                        doc.utf8String = store.id + "//" + item.id + "//" + userId
                         doc.design.shape.onPixels = QRCode.PixelShape.Squircle(insetFraction: 0.1)
                         doc.design.shape.eye = QRCode.EyeShape.Squircle()
                         doc.errorCorrection = .high

@@ -129,4 +129,30 @@ class DataController: ObservableObject {
             }
         }
     }
+    
+    func scanQR(request: ScanQRRequest, completion: @escaping (String?) -> Void) {
+        if let requestBody = encodeJson(data: request) {
+            let request = RESTRequest(apiName: Const.API,
+                                      path: "/qr/scan",
+                                      body: requestBody)
+            
+            Task {
+                do {
+                    let data = try await Amplify.API.post(request: request)
+                    let str = String(decoding: data, as: UTF8.self)
+                    print("Scan QR success \(str)")
+                    //                    if let response: GroupResponse = decodeJson(data: data) {
+                    //                        completion(.success(response))
+                    //                    } else {
+                    //                        completion(.failure(ApiError.invalidJSON))
+                    //                    }
+                    completion(nil)
+                } catch let error as APIError {
+                    print("Create group failed \(error)")
+                    completion(error.localizedDescription)
+                    //                    completion(.failure(ApiError.generalError))
+                }
+            }
+        }
+    }
 }
