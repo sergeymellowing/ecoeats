@@ -51,10 +51,6 @@
 		85D640C72C747BD900E0572A /* ApiUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D640C62C747BD900E0572A /* ApiUser.swift */; };
 		85D640C92C7491B700E0572A /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D640C82C7491B700E0572A /* AccountView.swift */; };
 		85D640CB2C75BC3100E0572A /* ScanQRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D640CA2C75BC3100E0572A /* ScanQRRequest.swift */; };
-		85DBA21E2C75DC2D006EB42D /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 85DBA21D2C75DC2D006EB42D /* QRCode */; };
-		85DBA2202C75DC2D006EB42D /* QRCodeDetector in Frameworks */ = {isa = PBXBuildFile; productRef = 85DBA21F2C75DC2D006EB42D /* QRCodeDetector */; };
-		85DBA2222C75DC2D006EB42D /* QRCodeDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 85DBA2212C75DC2D006EB42D /* QRCodeDynamic */; };
-		85DBA2242C75DC2D006EB42D /* QRCodeStatic in Frameworks */ = {isa = PBXBuildFile; productRef = 85DBA2232C75DC2D006EB42D /* QRCodeStatic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,15 +100,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85DBA21E2C75DC2D006EB42D /* QRCode in Frameworks */,
 				85D28E352C635B58008D5F15 /* AWSAPIPlugin in Frameworks */,
 				85D28E3D2C635B58008D5F15 /* AWSLocationGeoPlugin in Frameworks */,
 				85D28E372C635B58008D5F15 /* AWSCloudWatchLoggingPlugin in Frameworks */,
 				85D28E4D2C64A2D9008D5F15 /* CachedAsyncImage in Frameworks */,
-				85DBA2222C75DC2D006EB42D /* QRCodeDynamic in Frameworks */,
 				85D28E392C635B58008D5F15 /* AWSCognitoAuthPlugin in Frameworks */,
-				85DBA2202C75DC2D006EB42D /* QRCodeDetector in Frameworks */,
-				85DBA2242C75DC2D006EB42D /* QRCodeStatic in Frameworks */,
 				85D28E3B2C635B58008D5F15 /* AWSDataStorePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,10 +276,6 @@
 				85D28E3A2C635B58008D5F15 /* AWSDataStorePlugin */,
 				85D28E3C2C635B58008D5F15 /* AWSLocationGeoPlugin */,
 				85D28E4C2C64A2D9008D5F15 /* CachedAsyncImage */,
-				85DBA21D2C75DC2D006EB42D /* QRCode */,
-				85DBA21F2C75DC2D006EB42D /* QRCodeDetector */,
-				85DBA2212C75DC2D006EB42D /* QRCodeDynamic */,
-				85DBA2232C75DC2D006EB42D /* QRCodeStatic */,
 			);
 			productName = ecoeats;
 			productReference = 85891C2E2C61F8A70039380F /* ecoeats.app */;
@@ -320,7 +308,6 @@
 			packageReferences = (
 				85D28E332C635B58008D5F15 /* XCRemoteSwiftPackageReference "amplify-swift" */,
 				85D28E4B2C64A2D9008D5F15 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
-				85DBA21C2C75DC2D006EB42D /* XCRemoteSwiftPackageReference "QRCode" */,
 			);
 			productRefGroup = 85891C2F2C61F8A70039380F /* Products */;
 			projectDirPath = "";
@@ -521,6 +508,7 @@
 				DEVELOPMENT_TEAM = 6S83TJN3P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need access to your camera to scan QR code";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -555,6 +543,7 @@
 				DEVELOPMENT_TEAM = 6S83TJN3P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need access to your camera to scan QR code";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -617,14 +606,6 @@
 				minimumVersion = 2.6.0;
 			};
 		};
-		85DBA21C2C75DC2D006EB42D /* XCRemoteSwiftPackageReference "QRCode" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dagronf/QRCode.git";
-			requirement = {
-				kind = exactVersion;
-				version = 19.3.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -657,26 +638,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 85D28E4B2C64A2D9008D5F15 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
-		};
-		85DBA21D2C75DC2D006EB42D /* QRCode */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85DBA21C2C75DC2D006EB42D /* XCRemoteSwiftPackageReference "QRCode" */;
-			productName = QRCode;
-		};
-		85DBA21F2C75DC2D006EB42D /* QRCodeDetector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85DBA21C2C75DC2D006EB42D /* XCRemoteSwiftPackageReference "QRCode" */;
-			productName = QRCodeDetector;
-		};
-		85DBA2212C75DC2D006EB42D /* QRCodeDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85DBA21C2C75DC2D006EB42D /* XCRemoteSwiftPackageReference "QRCode" */;
-			productName = QRCodeDynamic;
-		};
-		85DBA2232C75DC2D006EB42D /* QRCodeStatic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 85DBA21C2C75DC2D006EB42D /* XCRemoteSwiftPackageReference "QRCode" */;
-			productName = QRCodeStatic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

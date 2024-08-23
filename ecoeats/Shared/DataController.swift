@@ -132,13 +132,14 @@ class DataController: ObservableObject {
     
     func scanQR(request: ScanQRRequest, completion: @escaping (String?) -> Void) {
         if let requestBody = encodeJson(data: request) {
-            let request = RESTRequest(apiName: Const.API,
+            let scanRequest = RESTRequest(apiName: Const.API,
                                       path: "/qr/scan",
                                       body: requestBody)
+            print("scanning: \(request)")
             
             Task {
                 do {
-                    let data = try await Amplify.API.post(request: request)
+                    let data = try await Amplify.API.post(request: scanRequest)
                     let str = String(decoding: data, as: UTF8.self)
                     print("Scan QR success \(str)")
                     //                    if let response: GroupResponse = decodeJson(data: data) {
@@ -148,7 +149,7 @@ class DataController: ObservableObject {
                     //                    }
                     completion(nil)
                 } catch let error as APIError {
-                    print("Create group failed \(error)")
+                    print("Scan QR code failed \(error)")
                     completion(error.localizedDescription)
                     //                    completion(.failure(ApiError.generalError))
                 }

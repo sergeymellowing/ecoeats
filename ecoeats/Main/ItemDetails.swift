@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
-import QRCode
+//import QRCode
+import CoreImage.CIFilterBuiltins
+
 
 struct ItemDetails: View {
     @EnvironmentObject var dataController: DataController
     @EnvironmentObject var appController: AppController
-    @State var qrcode: QRCode.Document? = nil
+//    @State var qrcode: QRCode.Document? = nil
+    @State var qrcode: UIImage? = nil
     @State var isLoading: Bool = false
     
     let item: Item
@@ -30,12 +33,17 @@ struct ItemDetails: View {
                         ProgressView()
                     } else {
                         if let qrcode = qrcode {
-                            QRCodeDocumentUIView(document: qrcode)
-                                .onTapGesture {
-                                    withAnimation {
-                                        //                                    self.expired.toggle()
-                                    }
-                                }
+//                            QRCodeDocumentUIView(document: qrcode)
+//                                .onTapGesture {
+//                                    withAnimation {
+//                                        //                                    self.expired.toggle()
+//                                    }
+//                                }
+                            Image(uiImage: qrcode)
+                                .interpolation(.none)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
                         }
                     }
                 }
@@ -83,25 +91,28 @@ struct ItemDetails: View {
                         self.isLoading = false
                     }
                 } else {
-                    let qrcodeDoc: QRCode.Document = {
-                        let doc = QRCode.Document()
-                        doc.utf8String = store.id + "//" + item.id + "//" + userId
-                        doc.design.shape.onPixels = QRCode.PixelShape.Squircle(insetFraction: 0.1)
-                        doc.design.shape.eye = QRCode.EyeShape.Squircle()
-                        doc.errorCorrection = .high
-                        print("QR CODE: \(doc.utf8String)")
-                        //                    let image = UIImage(named: "LOGO")!
-                        
-                        // Centered square logo
-                        //                    doc.logoTemplate = QRCode.LogoTemplate(
-                        //                        image: image.cgImage!,
-                        //                        path: CGPath(rect: CGRect(x: 0.40, y: 0.40, width: 0.20, height: 0.20), transform: nil),
-                        //                        inset: 2
-                        //                    )
-                        
-                        return doc
-                    }()
-                    self.qrcode = qrcodeDoc
+                    let context = CIContext()
+                    let filter = CIFilter.qrCodeGenerator()
+                    self.qrcode = QRCodeGenerator().generateQRCode(from: store.id + "//" + item.id + "//" + userId)
+//                    let qrcodeDoc: QRCode.Document = {
+//                        let doc = QRCode.Document()
+//                        doc.utf8String = store.id + "//" + item.id + "//" + userId
+//                        doc.design.shape.onPixels = QRCode.PixelShape.Squircle(insetFraction: 0.1)
+//                        doc.design.shape.eye = QRCode.EyeShape.Squircle()
+//                        doc.errorCorrection = .high
+//                        print("QR CODE: \(doc.utf8String)")
+//                        //                    let image = UIImage(named: "LOGO")!
+//                        
+//                        // Centered square logo
+//                        //                    doc.logoTemplate = QRCode.LogoTemplate(
+//                        //                        image: image.cgImage!,
+//                        //                        path: CGPath(rect: CGRect(x: 0.40, y: 0.40, width: 0.20, height: 0.20), transform: nil),
+//                        //                        inset: 2
+//                        //                    )
+//                        
+//                        return doc
+//                    }()
+//                    self.qrcode = qrcodeDoc
                     //            }
                     withAnimation {
                         isLoading = false

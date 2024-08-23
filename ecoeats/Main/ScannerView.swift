@@ -42,7 +42,7 @@ struct ScannerView: View {
             let data = result.string.components(separatedBy: "//")
             if data.count > 2 {
                 let request = ScanQRRequest(userId: data[0], storeId: data[1], itemId: data[2])
-                
+
                 dataController.scanQR(request: request) { error in
                     if let error {
                         print(error)
