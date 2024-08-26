@@ -15,9 +15,9 @@ enum MainState: CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .map:
-            return "Map"
+            return "map"
         case .list:
-            return "List"
+            return "list"
         }
     }
 }

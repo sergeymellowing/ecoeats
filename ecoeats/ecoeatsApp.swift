@@ -25,7 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         configureAmplify()
-        
+        setupUI()
         return true
     }
     
@@ -37,5 +37,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         } catch {
             fatalError("An error occurred setting up session.")
         }
+    }
+    
+    private func setupUI() {
+        
+        UISegmentedControl.appearance().selectedSegmentTintColor = .green800
+        UISegmentedControl.appearance().backgroundColor = .darkGray.withAlphaComponent(0.7)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.blue], for: .normal)
+        UISegmentedControl.appearance().setContentHuggingPriority(.defaultLow, for: .vertical)
+        
     }
 }

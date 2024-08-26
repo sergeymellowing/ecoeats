@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import CachedAsyncImage
 
 extension CLLocationCoordinate2D: Identifiable {
     public var id: String {
@@ -17,32 +18,35 @@ extension CLLocationCoordinate2D: Identifiable {
 struct MapView: View {
     @EnvironmentObject var dataController: DataController
     @EnvironmentObject var mainScreenController: MainScreenController
-
-//    [
-//        StorePin(name: "London", coordinate: CLLocationCoordinate2D(latitude: 37.507222, longitude: 126.99)),
-//        StorePin(name: "Paris", coordinate: CLLocationCoordinate2D(latitude: 37.2567, longitude: 126.79)),
-//        StorePin(name: "Rome", coordinate: CLLocationCoordinate2D(latitude: 37.0, longitude: 127.0)),
-//        ]
+    @EnvironmentObject var locationManager: LocationManager
+    @State var selectedStore: Store?
     
     var body: some View {
         let annotations = dataController.stores
-        
-            Map(coordinateRegion: $mainScreenController.region, showsUserLocation: true, annotationItems: annotations) { store in
-            //            MapPin(coordinate: $0.coordinate)
-            //            Marker("$0.name", coordinate: $0.coordinate)
-            //            MapMarker(coordinate: $0.coordinate)
-            
-            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(store.location.latitude), longitude: CLLocationDegrees(store.location.longitude))) {
-                NavigationLink(destination: {
-                    StoreDetails(store: store)
-                }) {
-                    Circle()
-                        .strokeBorder(.red, lineWidth: 2)
-                        .frame(width: 20, height: 20)
+        ZStack(alignment: .bottom) {
+            Map(coordinateRegion: $mainScreenController.region, showsUserLocation: mainScreenController.currentLocationOn, annotationItems: annotations) { store in
+                
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(store.location.latitude), longitude: CLLocationDegrees(store.location.longitude))) {
+                    
+                    MapAnnotationView(selectedStore: $selectedStore, store: store)
                 }
+            }
+            
+            if let selectedStore {
+                StoresStack(selectedStore: $selectedStore)
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .onAppear {
+            if let lat = locationManager.lastLocation?.coordinate.latitude, let lng = locationManager.lastLocation?.coordinate.longitude {
+                withAnimation {
+                    mainScreenController.setRegion(lat: lat, lng: lng, delta: 0.1)
+                }
+            }
+        }
+//        .onReceive(mainScreenController.$region) { region in
+//            print(region.span.longitudeDelta)
+//        }
     }
 }
 

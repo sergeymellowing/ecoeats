@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		854864362C7C3F9F00AE2D19 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864352C7C3F9F00AE2D19 /* Extensions.swift */; };
+		8548643F2C7C6BE000AE2D19 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */; };
+		854864412C7C6CDA00AE2D19 /* StackNotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864402C7C6CDA00AE2D19 /* StackNotTests.swift */; };
 		8553E0F92C6EE52C00C56635 /* StoreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0F82C6EE52C00C56635 /* StoreRow.swift */; };
 		8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FA2C6EE57100C56635 /* StoreDetails.swift */; };
 		8553E0FD2C6EE94F00C56635 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */; };
@@ -54,6 +57,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		854864352C7C3F9F00AE2D19 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
+		854864402C7C6CDA00AE2D19 /* StackNotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackNotTests.swift; sourceTree = "<group>"; };
 		8553E0F82C6EE52C00C56635 /* StoreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRow.swift; sourceTree = "<group>"; };
 		8553E0FA2C6EE57100C56635 /* StoreDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetails.swift; sourceTree = "<group>"; };
 		8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 				8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */,
 				85D640C22C74752100E0572A /* ScannerView.swift */,
 				85D640C82C7491B700E0572A /* AccountView.swift */,
+				8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */,
+				854864402C7C6CDA00AE2D19 /* StackNotTests.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 				85D28E462C64978F008D5F15 /* JsonHelper.swift */,
 				8553E1002C6EF86A00C56635 /* Const.swift */,
 				8553E1042C6F034300C56635 /* LocationManager.swift */,
+				854864352C7C3F9F00AE2D19 /* Extensions.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -343,6 +352,7 @@
 				8553E1052C6F034300C56635 /* LocationManager.swift in Sources */,
 				85891C4A2C61FC560039380F /* Main.swift in Sources */,
 				85891C612C6340CF0039380F /* TestData.swift in Sources */,
+				8548643F2C7C6BE000AE2D19 /* MapAnnotationView.swift in Sources */,
 				85891C4F2C61FC9B0039380F /* AppState.swift in Sources */,
 				8553E0F92C6EE52C00C56635 /* StoreRow.swift in Sources */,
 				8553E1082C6F03B900C56635 /* DistanceString.swift in Sources */,
@@ -350,6 +360,7 @@
 				85D640C32C74752100E0572A /* ScannerView.swift in Sources */,
 				85891C5E2C63407E0039380F /* Item.swift in Sources */,
 				85891C522C61FD4C0039380F /* AppController.swift in Sources */,
+				854864412C7C6CDA00AE2D19 /* StackNotTests.swift in Sources */,
 				85D640C52C747BB300E0572A /* ApiResult.swift in Sources */,
 				8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */,
 				85D640C92C7491B700E0572A /* AccountView.swift in Sources */,
@@ -357,6 +368,7 @@
 				85D640BF2C7474F600E0572A /* CodeScanner.swift in Sources */,
 				85D640C02C7474F600E0572A /* QRCodeGenerator.swift in Sources */,
 				8553E1012C6EF86A00C56635 /* Const.swift in Sources */,
+				854864362C7C3F9F00AE2D19 /* Extensions.swift in Sources */,
 				85891C462C61FC060039380F /* Onboarding.swift in Sources */,
 				85891C562C6200150039380F /* MainListView.swift in Sources */,
 				85D28E472C64978F008D5F15 /* JsonHelper.swift in Sources */,
