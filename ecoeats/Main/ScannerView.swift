@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScannerView: View {
     @EnvironmentObject var appController: AppController
-    @EnvironmentObject var dataController: DataController
+//    @EnvironmentObject var dataController: DataController
     @State var torchIsOn: Bool = false
     @State var showAlert: Bool = false
     
@@ -43,7 +43,7 @@ struct ScannerView: View {
             if data.count > 2 {
                 let request = ScanQRRequest(userId: data[0], storeId: data[1], itemId: data[2])
 
-                dataController.scanQR(request: request) { error in
+                DataController().scanQR(request: request) { error in
                     if let error {
                         print(error)
                     } else {

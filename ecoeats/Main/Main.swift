@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Main: View {
-    @EnvironmentObject var dataController: DataController
+//    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var appController: AppController
     @StateObject var mainScreenController = MainScreenController()
     @StateObject var locationManager = LocationManager()
@@ -89,7 +89,13 @@ struct Main: View {
         }
 //        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            dataController.getStores(lookAround: appController.apiUser == nil) { error in }
+            DataController().getStores(lookAround: appController.apiUser == nil) { stores in
+                if let stores {
+                    DispatchQueue.main.async {
+                        mainScreenController.stores = stores
+                    }
+                }
+            }
         }
         .environmentObject(mainScreenController)
         .environmentObject(locationManager)

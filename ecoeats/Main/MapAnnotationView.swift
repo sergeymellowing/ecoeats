@@ -10,11 +10,11 @@ import CachedAsyncImage
 
 struct MapAnnotationView: View {
     @EnvironmentObject var mainScreenController: MainScreenController
-    @Binding var selectedStore: Store?
+    
     let store: Store
     
     var body: some View {
-        let selected = self.selectedStore?.id == store.id
+        let selected = mainScreenController.selectedStore?.id == store.id
         ZStack(alignment: .top) {
             Image(selected ? "selected-pin" : "pin")
                 .resizable()
@@ -53,15 +53,12 @@ struct MapAnnotationView: View {
             }
             
         }
-        .onTapGesture {
-            let delta = 0.04
-//                    let delta = mainScreenController.region.span.longitudeDelta < 0.1 ? mainScreenController.region.span.latitudeDelta : nil
-            withAnimation {
-                self.selectedStore = store
-                mainScreenController.setRegion(lat: store.location.latitude, lng: store.location.longitude, delta: delta)
-                print(self.selectedStore?.storeName)
-            }
-        }
+        .highPriorityGesture(
+            TapGesture()
+                .onEnded {
+                    mainScreenController.selectStore(store: store)
+                }
+        )
     }
 }
 

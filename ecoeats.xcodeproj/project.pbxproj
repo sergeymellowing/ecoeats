@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1A579D2C7DFF86006C0BA6 /* ItemsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */; };
 		854864362C7C3F9F00AE2D19 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864352C7C3F9F00AE2D19 /* Extensions.swift */; };
 		8548643F2C7C6BE000AE2D19 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */; };
-		854864412C7C6CDA00AE2D19 /* StackNotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864402C7C6CDA00AE2D19 /* StackNotTests.swift */; };
+		854864412C7C6CDA00AE2D19 /* StoresStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864402C7C6CDA00AE2D19 /* StoresStack.swift */; };
 		8553E0F92C6EE52C00C56635 /* StoreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0F82C6EE52C00C56635 /* StoreRow.swift */; };
 		8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FA2C6EE57100C56635 /* StoreDetails.swift */; };
 		8553E0FD2C6EE94F00C56635 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */; };
@@ -57,9 +58,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsStack.swift; sourceTree = "<group>"; };
 		854864352C7C3F9F00AE2D19 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
-		854864402C7C6CDA00AE2D19 /* StackNotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackNotTests.swift; sourceTree = "<group>"; };
+		854864402C7C6CDA00AE2D19 /* StoresStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresStack.swift; sourceTree = "<group>"; };
 		8553E0F82C6EE52C00C56635 /* StoreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRow.swift; sourceTree = "<group>"; };
 		8553E0FA2C6EE57100C56635 /* StoreDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetails.swift; sourceTree = "<group>"; };
 		8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
@@ -198,11 +200,12 @@
 				8553E0FA2C6EE57100C56635 /* StoreDetails.swift */,
 				8553E0FE2C6EF27800C56635 /* ItemRow.swift */,
 				8553E1022C6EFA4000C56635 /* ItemDetails.swift */,
-				8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */,
 				85D640C22C74752100E0572A /* ScannerView.swift */,
 				85D640C82C7491B700E0572A /* AccountView.swift */,
 				8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */,
-				854864402C7C6CDA00AE2D19 /* StackNotTests.swift */,
+				854864402C7C6CDA00AE2D19 /* StoresStack.swift */,
+				8553E0FC2C6EE94F00C56635 /* MainScreenController.swift */,
+				2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85891C582C62005D0039380F /* MainState.swift in Sources */,
+				2B1A579D2C7DFF86006C0BA6 /* ItemsStack.swift in Sources */,
 				85D640C72C747BD900E0572A /* ApiUser.swift in Sources */,
 				85891C4C2C61FC620039380F /* Settings.swift in Sources */,
 				8553E1052C6F034300C56635 /* LocationManager.swift in Sources */,
@@ -360,7 +364,7 @@
 				85D640C32C74752100E0572A /* ScannerView.swift in Sources */,
 				85891C5E2C63407E0039380F /* Item.swift in Sources */,
 				85891C522C61FD4C0039380F /* AppController.swift in Sources */,
-				854864412C7C6CDA00AE2D19 /* StackNotTests.swift in Sources */,
+				854864412C7C6CDA00AE2D19 /* StoresStack.swift in Sources */,
 				85D640C52C747BB300E0572A /* ApiResult.swift in Sources */,
 				8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */,
 				85D640C92C7491B700E0572A /* AccountView.swift in Sources */,

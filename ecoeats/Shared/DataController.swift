@@ -8,14 +8,14 @@
 import SwiftUI
 import Amplify
 
-class DataController: ObservableObject {
-    @Published var stores: [Store] = []
+class DataController {
+    
     
 //    func getData() {
 //        self.stores = DummyData.storeList
 //    }
     
-    func getStores(lookAround: Bool, completion: @escaping (String?) -> Void) {
+    func getStores(lookAround: Bool, completion: @escaping ([Store]?) -> Void) {
         if lookAround {
             let url = URL(string: "\(Const.domain)stores/get")!
             
@@ -25,16 +25,14 @@ class DataController: ObservableObject {
                 do {
                     if let response: GetStoresResponse = decodeJson(data: data) {
                         //                    await MainActor.run {
-                        DispatchQueue.main.async {
-                            self.stores = response.data
-                        }
+//                        DispatchQueue.main.async {
+//                            self.stores = response.data
+//                        }
                         
                         //                    }
-                        completion(response.data.isEmpty ?
-                                   "GetStoresResponse error" :
-                                    nil)
+                        completion(response.data)
                     } else {
-                        completion("Error: Invalid Json")
+                        completion(nil)
                     }
                 }
             }
@@ -54,18 +52,16 @@ class DataController: ObservableObject {
                     print("Get Store success \(str)")
                     print(data.description)
                     if let response: GetStoresResponse = decodeJson(data: data) {
-                        await MainActor.run {
-                            self.stores = response.data
-                        }
-                        completion(response.data.isEmpty ?
-                                   "GetStoresResponse error" :
-                                    nil)
+//                        await MainActor.run {
+//                            self.stores = response.data
+//                        }
+                        completion(response.data)
                     } else {
-                        completion("Error: Invalid Json")
+                        completion(nil)
                     }
                 } catch {
                     print("Get Store failure: \(error)")
-                    completion(error.localizedDescription)
+                    completion(nil)
                 }
             }
         }

@@ -8,7 +8,11 @@
 import Foundation
 import MapKit
 
-struct Store: Identifiable, Codable {
+struct Store: Identifiable, Codable, Equatable {
+    static func == (lhs: Store, rhs: Store) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: String
     let storeName: String
     let address: String

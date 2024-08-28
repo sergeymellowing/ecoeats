@@ -11,7 +11,7 @@ import CoreImage.CIFilterBuiltins
 
 
 struct ItemDetails: View {
-    @EnvironmentObject var dataController: DataController
+//    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var appController: AppController
 //    @State var qrcode: QRCode.Document? = nil
     @State var qrcode: UIImage? = nil
@@ -83,7 +83,8 @@ struct ItemDetails: View {
     private func setToken() {
         if let userId = appController.apiUser?.id {
             self.isLoading = true
-            dataController.checkQR(storeId: store.id, itemId: item.id, userId: userId) { error in
+            
+            DataController().checkQR(storeId: store.id, itemId: item.id, userId: userId) { error in
                 //        dataController.checkQR(storeId: "101", itemId: "101", userId: "user_id") { error in
                 if let error {
                     print(error)

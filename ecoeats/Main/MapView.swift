@@ -16,24 +16,26 @@ extension CLLocationCoordinate2D: Identifiable {
 }
 
 struct MapView: View {
-    @EnvironmentObject var dataController: DataController
+//    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var mainScreenController: MainScreenController
     @EnvironmentObject var locationManager: LocationManager
-    @State var selectedStore: Store?
     
     var body: some View {
-        let annotations = dataController.stores
+        let annotations = mainScreenController.stores
         ZStack(alignment: .bottom) {
             Map(coordinateRegion: $mainScreenController.region, showsUserLocation: mainScreenController.currentLocationOn, annotationItems: annotations) { store in
                 
                 MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(store.location.latitude), longitude: CLLocationDegrees(store.location.longitude))) {
                     
-                    MapAnnotationView(selectedStore: $selectedStore, store: store)
+                    MapAnnotationView(store: store)
                 }
             }
+            .onTapGesture {
+                mainScreenController.deSelectStore()
+            }
             
-            if let selectedStore {
-                StoresStack(selectedStore: $selectedStore)
+            if mainScreenController.selectedStore != nil {
+                StoresStack()
             }
         }
         .edgesIgnoringSafeArea(.all)

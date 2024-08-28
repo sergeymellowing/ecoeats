@@ -8,13 +8,41 @@
 import SwiftUI
 
 struct MainListView: View {
-    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var appController: AppController
+    @EnvironmentObject var mainScreenController: MainScreenController
     
     var body: some View {
         VStack {
-            Spacer(minLength: 70)
-            List(dataController.stores) { store in
+            Spacer(minLength: 150 - 55/* safearea*/)
+            
+            HStack {
+                HStack {
+                    Text("전체")
+                        .foregroundColor(.black)
+                    Text(mainScreenController.stores.count.description)
+                        .foregroundColor(.greenMain)
+                }
+                .font(.system(size: 16,weight: .semibold))
+                
+                Spacer()
+                Button(action: {}) {
+                    HStack {
+                        Text("추천순")
+                        Image(systemName: "chevron.down")
+                    }
+                    .foregroundColor(.black)
+                    .font(.system(size: 16,weight: .medium))
+                }
+                
+            }
+            .padding(.horizontal, 10)
+            
+            Divider()
+                .padding(.top, 17)
+                .padding(.bottom, 30)
+            
+            
+            List(mainScreenController.stores) { store in
                 NavigationLink(destination: {
                     StoreDetails(store: store)
                 }) {
@@ -22,13 +50,18 @@ struct MainListView: View {
                 }
             }.refreshable(action: {
                 withAnimation {
-                    dataController.stores = []
-                    dataController.getStores(lookAround: appController.apiUser == nil) { error in }
+                    mainScreenController.stores = []
+                    DataController().getStores(lookAround: appController.apiUser == nil) { stores in
+                        if let stores {
+                            mainScreenController.stores = stores
+                        }
+                    }
                 }
             })
             
             Spacer()
         }
+        .padding(.horizontal, 20)
     }
 }
 

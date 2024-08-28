@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var appController = AppController()
-    @StateObject var dataController = DataController()
+    
     @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
     
     var body: some View {
@@ -26,7 +26,7 @@ struct ContentView: View {
             }
         }
         .environmentObject(appController)
-        .environmentObject(dataController)
+//        .environmentObject(dataController)
         .onAppear {
 //            isAppOnboarded = false
             appController.getCurrentAuthSession()
