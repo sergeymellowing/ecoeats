@@ -31,11 +31,13 @@ struct MapView: View {
                 }
             }
             .onTapGesture {
+                print("MAP tap")
                 mainScreenController.deSelectStore()
             }
             
             if mainScreenController.selectedStore != nil {
-                StoresStack()
+//                StoresStack()
+                StoreStack()
             }
         }
         .edgesIgnoringSafeArea(.all)

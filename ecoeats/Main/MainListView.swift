@@ -12,7 +12,7 @@ struct MainListView: View {
     @EnvironmentObject var mainScreenController: MainScreenController
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Spacer(minLength: 150 - 55/* safearea*/)
             
             HStack {
@@ -39,14 +39,19 @@ struct MainListView: View {
             
             Divider()
                 .padding(.top, 17)
-                .padding(.bottom, 30)
+                
             
             
-            List(mainScreenController.stores) { store in
-                NavigationLink(destination: {
-                    StoreDetails(store: store)
-                }) {
-                    StoreRow(store: store)
+                ScrollView(showsIndicators: false) {
+                    ForEach(mainScreenController.stores) { store in
+                    //            List(mainScreenController.stores) { store in
+                    NavigationLink(destination: {
+                        StoreDetails(store: store)
+                    }) {
+                        StoreRow(store: store)
+                            .padding(.bottom, 20)
+                            .padding(.top, 30)
+                    }
                 }
             }.refreshable(action: {
                 withAnimation {
@@ -62,6 +67,8 @@ struct MainListView: View {
             Spacer()
         }
         .padding(.horizontal, 20)
+        .background(.gray100)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

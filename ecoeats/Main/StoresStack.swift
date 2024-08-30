@@ -8,6 +8,7 @@
 import SwiftUI
 import CachedAsyncImage
 
+
 struct StoresStack : View {
 //    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var mainScreenController: MainScreenController

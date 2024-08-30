@@ -22,17 +22,20 @@ class MainScreenController: ObservableObject {
     }
     
     func selectStore(store: Store) {
-        let delta = 0.04
-//                    let delta = mainScreenController.region.span.longitudeDelta < 0.1 ? mainScreenController.region.span.latitudeDelta : nil
-        withAnimation {
-            self.selectedStore = store
-            self.setRegion(lat: store.location.latitude, lng: store.location.longitude, delta: delta)
-            print(self.selectedStore?.storeName)
-            if stores.first?.id != store.id {
-                stores.removeAll(where: { $0.id == store.id })
-                stores.insert(store, at: 0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            let delta = 0.04
+    //                    let delta = mainScreenController.region.span.longitudeDelta < 0.1 ? mainScreenController.region.span.latitudeDelta : nil
+            withAnimation {
+                self.selectedStore = store
+                self.setRegion(lat: store.location.latitude, lng: store.location.longitude, delta: delta)
+                print(self.selectedStore?.storeName)
+                if self.stores.first?.id != store.id {
+                    self.stores.removeAll(where: { $0.id == store.id })
+                    self.stores.insert(store, at: 0)
+                }
             }
         }
+        
     }
     
     func deSelectStore() {
