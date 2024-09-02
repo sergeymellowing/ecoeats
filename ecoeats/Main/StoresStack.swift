@@ -109,6 +109,7 @@ struct StoresStack : View {
                             //                        .offset(x: 0, y: offsetForIndex(index) + (self.dragOffset * CGFloat(3 - index)))
                             .offset(x: 0, y: offsetForIndex(index) + (index == 0 ? self.dragOffset : self.dragOffset * 0.3))
                             .zIndex(Double(-index))
+                            
                         }
                         
                     }

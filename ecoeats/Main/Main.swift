@@ -63,6 +63,7 @@ struct Main: View {
                         .pickerStyle(.segmented)
                         .frame(width: UIScreen.main.bounds.width / 3, height: 50)
                         
+                        
                         Spacer()
                         
                         HStack {
@@ -83,11 +84,30 @@ struct Main: View {
                     }.frame(maxWidth: .infinity, alignment: .center)
                 }
                 .padding()
+
+                
+                if mainScreenController.selectedItem != nil {
+                    Color.black.opacity(0.7)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation {
+                                mainScreenController.selectedItem = nil
+                            }
+                        }
+                }
             }
-//            .navigationTitle(Text("MAIN"))
             .navigationBarTitleDisplayMode(.inline)
+            
         }
 //        .edgesIgnoringSafeArea(.bottom)
+        .overlay(
+            mainScreenController.selectedItem != nil ?
+            
+                ItemDetails().transition(.move(edge: .bottom))
+            
+                
+            : nil
+        )
         .onAppear {
             DataController().getStores(lookAround: appController.apiUser == nil) { stores in
                 if let stores {

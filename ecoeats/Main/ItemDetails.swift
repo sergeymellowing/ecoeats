@@ -14,17 +14,18 @@ import CachedAsyncImage
 struct ItemDetails: View {
     //    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var appController: AppController
+    @EnvironmentObject var mainScreenController: MainScreenController
     //    @State var qrcode: QRCode.Document? = nil
     @State var qrcode: UIImage? = nil
     @State var isLoading: Bool = false
     @State var offset: CGFloat = 0
     @State var qrCodeMode: Bool = false
-    @Binding var selectedItem: Item?
+//    @Binding var selectedItem: Item?
     
-    let store: Store
+//    let store: Store
     
     var body: some View {
-        if let item = selectedItem {
+        if let item = mainScreenController.selectedItem {
             VStack {
                 Spacer()
                 VStack(alignment: .center, spacing: 20) {
@@ -269,7 +270,7 @@ struct ItemDetails: View {
                     .onEnded { gesture in
                         if gesture.translation.height > 100 {
                             withAnimation {
-                                self.selectedItem = nil
+                                mainScreenController.selectedItem = nil
                             }
                             
                         } else {
@@ -285,7 +286,7 @@ struct ItemDetails: View {
     }
     
     private func setToken() {
-        if let userId = appController.apiUser?.id, let item = selectedItem {
+        if let userId = appController.apiUser?.id, let item = mainScreenController.selectedItem, let store = mainScreenController.selectedStore {
             self.isLoading = true
             
             DataController().checkQR(storeId: store.id, itemId: item.id, userId: userId) { error in

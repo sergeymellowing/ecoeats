@@ -13,7 +13,6 @@ struct StoreDetails: View {
     @EnvironmentObject var mainScreenController: MainScreenController
     @EnvironmentObject var appController: AppController
     @EnvironmentObject var locationManager: LocationManager
-    @State var selectedItem: Item? = nil
     
     let store: Store
     
@@ -183,7 +182,7 @@ struct StoreDetails: View {
                                     .onTapGesture {
                                         if appController.apiUser != nil {
                                             withAnimation {
-                                                self.selectedItem = item
+                                                mainScreenController.selectedItem = item
                                             }
                                         }
                                     }
@@ -200,27 +199,33 @@ struct StoreDetails: View {
                     }
                 }
                 
-                BackButton(action: {
-                    presentationMode.wrappedValue.dismiss()
-                })
+                HStack {
+                    BlurButton(icon: "ic-chevron.back") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    Spacer()
+                    ShareLink(item: URL(string: "https://www.google.com")!) {
+                        BlurButtonView(icon: "ic-share")
+                    }
+                }
                 .padding(.top, 74)
-                .padding(.leading, 20)
+                .padding(.horizontal, 20)
             }
-            if let selectedItem {
+            if mainScreenController.selectedItem != nil {
                 Color.black.opacity(0.7)
                     .onTapGesture {
                         withAnimation {
-                            self.selectedItem = nil
+                            mainScreenController.selectedItem = nil
                         }
                     }
             }
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
-        .overlay(
-            self.selectedItem != nil ?
-                ItemDetails(selectedItem: $selectedItem, store: store).transition(.move(edge: .bottom))
-            : nil
-        )
+//        .overlay(
+//            mainScreenController.selectedItem != nil ?
+//                ItemDetails(store: store).transition(.move(edge: .bottom))
+//            : nil
+//        )
     }
 }

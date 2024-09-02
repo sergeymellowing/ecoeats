@@ -9,6 +9,7 @@ import SwiftUI
 import CachedAsyncImage
 
 struct ItemsStack: View {
+    @EnvironmentObject var mainScreenController: MainScreenController
     let items: [Item]
     
     var body: some View {
@@ -22,6 +23,7 @@ struct ItemsStack: View {
                                 Text(item.itemName)
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.black)
+                                    .lineLimit(1)
                                     .padding(.top, 66)
                                     .padding(.bottom, 5)
                                 
@@ -78,7 +80,9 @@ struct ItemsStack: View {
                     .padding(.leading, index == 0 ? 50 : 0)
                     .padding(.trailing, index + 1 >= items.count ? 50 : 0)
                     .onTapGesture {
-                        print(item.itemName)
+                        withAnimation {
+                            mainScreenController.selectedItem = item
+                        }
                     }
                 }
             }
