@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B1A579D2C7DFF86006C0BA6 /* ItemsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */; };
+		2BD7BF282C85B37600FCB257 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF272C85B37600FCB257 /* BackButton.swift */; };
+		2BD7BF2A2C85CB0E00FCB257 /* BackgroundClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF292C85CB0E00FCB257 /* BackgroundClearView.swift */; };
 		854864362C7C3F9F00AE2D19 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864352C7C3F9F00AE2D19 /* Extensions.swift */; };
 		8548643F2C7C6BE000AE2D19 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */; };
 		854864412C7C6CDA00AE2D19 /* StoresStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864402C7C6CDA00AE2D19 /* StoresStack.swift */; };
@@ -64,6 +66,9 @@
 
 /* Begin PBXFileReference section */
 		2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsStack.swift; sourceTree = "<group>"; };
+		2BD7BF252C85B05A00FCB257 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BD7BF272C85B37600FCB257 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		2BD7BF292C85CB0E00FCB257 /* BackgroundClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClearView.swift; sourceTree = "<group>"; };
 		854864352C7C3F9F00AE2D19 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		854864402C7C6CDA00AE2D19 /* StoresStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresStack.swift; sourceTree = "<group>"; };
@@ -111,7 +116,6 @@
 		85D7A3712C81AFD8008B2B23 /* CardStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStack.swift; sourceTree = "<group>"; };
 		85D7A3722C81AFD8008B2B23 /* CardStackConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackConfiguration.swift; sourceTree = "<group>"; };
 		85D7A3772C81B01D008B2B23 /* TestCardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardStack.swift; sourceTree = "<group>"; };
-		85D7A3792C81B4B0008B2B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 				85D7A36E2C81AFD8008B2B23 /* CardStack */,
 				85D640BB2C7474F600E0572A /* CodeScanner */,
 				8553E1072C6F03B900C56635 /* DistanceString.swift */,
+				2BD7BF272C85B37600FCB257 /* BackButton.swift */,
+				2BD7BF292C85CB0E00FCB257 /* BackgroundClearView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -160,7 +166,7 @@
 		85891C302C61F8A70039380F /* ecoeats */ = {
 			isa = PBXGroup;
 			children = (
-				85D7A3792C81B4B0008B2B23 /* Info.plist */,
+				2BD7BF252C85B05A00FCB257 /* Info.plist */,
 				85891C312C61F8A70039380F /* ecoeatsApp.swift */,
 				85891C332C61F8A70039380F /* ContentView.swift */,
 				85891C3F2C61FA9D0039380F /* Onboarding */,
@@ -395,9 +401,11 @@
 				85D640C52C747BB300E0572A /* ApiResult.swift in Sources */,
 				8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */,
 				85D640C92C7491B700E0572A /* AccountView.swift in Sources */,
+				2BD7BF2A2C85CB0E00FCB257 /* BackgroundClearView.swift in Sources */,
 				8553E1032C6EFA4000C56635 /* ItemDetails.swift in Sources */,
 				85D640BF2C7474F600E0572A /* CodeScanner.swift in Sources */,
 				85D640C02C7474F600E0572A /* QRCodeGenerator.swift in Sources */,
+				2BD7BF282C85B37600FCB257 /* BackButton.swift in Sources */,
 				8553E1012C6EF86A00C56635 /* Const.swift in Sources */,
 				854864362C7C3F9F00AE2D19 /* Extensions.swift in Sources */,
 				85891C462C61FC060039380F /* Onboarding.swift in Sources */,

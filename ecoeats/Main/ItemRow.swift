@@ -12,7 +12,7 @@ struct ItemRow: View {
     let item: Item
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             CachedAsyncImage(
                 url: "https://picsum.photos/200/300",
                 placeholder: { progress in
@@ -30,27 +30,33 @@ struct ItemRow: View {
                     Image(uiImage: $0)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 60, height: 60)
                 }
-                )
-            .cornerRadius(60)
+            )
+            .frame(width: 80, height: 80)
+            .clipShape(Circle())
             
             VStack(alignment: .leading) {
-                Text(item.itemName)
-                HStack {
-                    (Text(item.discount.description) + Text( "%"))
-                        .padding(.horizontal)
-                        .padding(.vertical, 2)
-                        .background(.gray.opacity(0.3))
-                        .cornerRadius(50)
-                    (Text(item.quantity.description) + Text(" left"))
-                        .padding(.horizontal)
-                        .padding(.vertical, 2)
-                        .background(.gray.opacity(0.3))
-                        .cornerRadius(50)
+                    Text(item.itemName)
+                        .font(.system(size: 18, weight: .bold))
+                        .lineLimit(1)
+                        .foregroundColor(.black)
+                        .padding(.bottom, 3)
+                
+                    Text(item.description)
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                        .padding(.bottom, 3)
+                    
+                    HStack {
+                        Spacer()
+                        ItemElement(image: "ic-discount-arrow", text: item.discount.description + " %")
+                        ItemElement(image: "ic-quantity", text: item.quantity.description + "개")
+                    }
                 }
-            }
+                .padding(.horizontal, 16)
         }
+        .padding(.bottom, 15)
     }
 }
 
