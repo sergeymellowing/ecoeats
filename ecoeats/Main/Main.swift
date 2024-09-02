@@ -50,7 +50,7 @@ struct Main: View {
                             
                         
                         Spacer()
-                        
+                        // TODO: Implement custon picker
                         Picker("", selection: $mainScreenController.state) {
                             ForEach(MainState.allCases) {
                                 Image("ic-\($0.description)")
