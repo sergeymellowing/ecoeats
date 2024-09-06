@@ -20,4 +20,13 @@ enum MainState: CaseIterable, Identifiable {
             return "list"
         }
     }
+    
+    var number: Int {
+        switch self {
+        case .map:
+            0
+        case .list:
+            1
+        }
+    }
 }

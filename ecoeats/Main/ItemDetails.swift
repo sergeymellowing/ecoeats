@@ -49,7 +49,6 @@ struct ItemDetails: View {
                         Text("이용 전 유의사항")
                             .font(.system(size: 16, weight: .semibold))
                         
-                        
                         let hint: String =
 """
 • 메뉴당 당일 구매가능 횟수는 1인 1개 입니다.
@@ -63,7 +62,7 @@ struct ItemDetails: View {
                             .foregroundColor(.gray800)
                             .lineSpacing(7)
                             .multilineTextAlignment(.leading)
-                        
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     Divider()
@@ -174,59 +173,7 @@ struct ItemDetails: View {
                                 }
                                 .padding(.bottom, 50)
                             }
-                            
                         }
-                        
-                        
-                    
-                    
-                    
-                    //                ZStack {
-                    //                    if isLoading {
-                    //                        ProgressView()
-                    //                    } else {
-                    //                        if let qrcode = qrcode {
-                    //                            //                            QRCodeDocumentUIView(document: qrcode)
-                    //                            //                                .onTapGesture {
-                    //                            //                                    withAnimation {
-                    //                            //                                        //                                    self.expired.toggle()
-                    //                            //                                    }
-                    //                            //                                }
-                    //                            Image(uiImage: qrcode)
-                    //                                .interpolation(.none)
-                    //                                .resizable()
-                    //                                .scaledToFit()
-                    //                                .frame(width: 200, height: 200)
-                    //                        }
-                    //                    }
-                    //                }
-                    //                .padding(7)
-                    //                //                .background(Color.red.opacity(0.3))
-                    //                .cornerRadius(20)
-                    //                .padding(.bottom, 32)
-                    //                .onAppear {
-                    //                    setToken()
-                    //                }
-                    //                HStack {
-                    //                    (Text(item.discount.description) + Text( "%"))
-                    //                        .padding(.horizontal)
-                    //                        .padding(.vertical, 2)
-                    //                        .background(.gray.opacity(0.3))
-                    //                        .cornerRadius(50)
-                    //                    (Text(item.quantity.description) + Text(" left"))
-                    //                        .padding(.horizontal)
-                    //                        .padding(.vertical, 2)
-                    //                        .background(.gray.opacity(0.3))
-                    //                        .cornerRadius(50)
-                    //                }
-                    //
-                    //                Spacer()
-                    //
-                    //                Text(item.description)
-                    //
-                    //                Text(Date().description)
-                    //                Spacer()
-                    //
                 }
                 .padding(.horizontal, 20)
                 .background(Color.gray100)

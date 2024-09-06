@@ -134,8 +134,9 @@ struct StoreDetails: View {
                                         .frame(width: 12, height: 12)
                                     Text(store.phoneNumber)
                                         .font(.system(size: 16))
-                                        .foregroundColor(.gray800)
+//                                        .foregroundColor(.gray800)
                                         .padding(.trailing)
+                                        .underline()
                                     //                                Text("복사")
                                     //                                    .underline()
                                     //                                    .font(.system(size: 14))
@@ -188,10 +189,6 @@ struct StoreDetails: View {
                                     }
                                 Divider()
                             }
-                            //                        .sheet(item: $selectedItem) { item in
-                            //                            ItemDetails(item: item, store: store)
-                            
-                            //                        }
                             Spacer(minLength: 200)
                         }
                         .padding(.horizontal, 20)
@@ -222,10 +219,10 @@ struct StoreDetails: View {
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
-//        .overlay(
-//            mainScreenController.selectedItem != nil ?
-//                ItemDetails(store: store).transition(.move(edge: .bottom))
-//            : nil
-//        )
+        .overlay(
+            mainScreenController.selectedItem != nil ?
+                ItemDetails().transition(.move(edge: .bottom))
+            : nil
+        )
     }
 }

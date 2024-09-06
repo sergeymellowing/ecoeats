@@ -13,13 +13,37 @@ struct StoresStack : View {
 //    @EnvironmentObject var dataController: DataController
     @EnvironmentObject var mainScreenController: MainScreenController
     @State var dragOffset: CGFloat = 0
+    @State var trigerred: Bool = false
     
     func offsetForIndex(_ index : Int) -> CGFloat {
-        CGFloat((mainScreenController.stores.count - index - 1) * (-16) )
+        if self.trigerred {
+            CGFloat((mainScreenController.stores.count - index) * (-16)) + (index == 0 ? 16 * 3 : 0)
+        } else {
+            CGFloat((mainScreenController.stores.count - index - 1) * (-16)) + (index == 0 ? self.dragOffset : 0)
+        }
+        
     }
     
     func horizontalPaddingForIndex(_ index : Int) -> CGFloat {
-        CGFloat(20 + index * 16)
+        if self.trigerred {
+            CGFloat(20 + (index - 1) * 16) + (index == 0 ? (3 * 16) : 0)
+        } else {
+            CGFloat(20 + index * 16)
+        }
+        
+    }
+    
+    func triggerValue(_ index : Int) -> Double {
+        if self.trigerred {
+            if index == 0 {
+                100
+            } else {
+                0
+            }
+        } else {
+            0
+        }
+        
     }
     
     var body: some View {
@@ -50,54 +74,7 @@ struct StoresStack : View {
                 GeometryReader { reader in
                     ForEach(Array(mainScreenController.stores.enumerated()), id: \.offset) { index, store in
                         if index < 3 {
-                            HStack {
-                                CachedAsyncImage(
-                                    url: "https://picsum.photos/200/300",
-                                    placeholder: { progress in
-                                        // Create any view for placeholder (optional).
-                                        ZStack {
-                                            ProgressView() {
-                                                VStack {
-                                                    Text("\(progress) %")
-                                                }
-                                            }
-                                        }
-                                    },
-                                    image: {
-                                        // Customize image.
-                                        Image(uiImage: $0)
-                                            .resizable()
-                                            .scaledToFill()
-                                    }
-                                )
-                                .frame(width: 60, height: 60)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                
-                                
-                                VStack(alignment: .leading, spacing: 7) {
-                                    Text(store.storeName)
-                                        .font(.system(size: 18, weight: .bold))
-                                        .foregroundColor(.white)
-                                        .lineLimit(1)
-                                    Text(store.address)
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.green100)
-                                        .lineLimit(1)
-                                }
-                                Spacer()
-                                
-                                VStack {
-                                    Spacer()
-                                    // TODO: DISTANCE
-                                    Text("24.3 km")
-                                        .font(.system(size: 12, weight: .semibold))
-                                        .foregroundColor(.green100)
-                                        .padding(.horizontal, 6)
-                                        .padding(.vertical, 5)
-                                        .background(.green900)
-                                        .cornerRadius(8)
-                                }
-                            }
+                            StoreStackElement(store: store)
                             
                             //                        .frame(height: 92)
                             .frame(maxWidth: .infinity)
@@ -107,14 +84,19 @@ struct StoresStack : View {
                             .padding(.horizontal, horizontalPaddingForIndex(index))
                             .shadow(color: .black.opacity(0.2), radius: 30)
                             //                        .offset(x: 0, y: offsetForIndex(index) + (self.dragOffset * CGFloat(3 - index)))
-                            .offset(x: 0, y: offsetForIndex(index) + (index == 0 ? self.dragOffset : self.dragOffset * 0.3))
-                            .zIndex(Double(-index))
+                            .offset(x: 0, y: offsetForIndex(index))
+                            .zIndex(Double(-index) - triggerValue(index))
                             
                         }
                         
                     }
                 }
                 .frame(height: CGFloat(100 + 12))
+                .onTapGesture {
+                    if mainScreenController.selectedStore != nil {
+                        mainScreenController.navigateToStoreDetails = true
+                    }
+                }
                 .gesture(DragGesture()
                     .onChanged { gesture in
                         //                    print(gesture.translation.height)
@@ -130,21 +112,24 @@ struct StoresStack : View {
                         } else {
                             print("switch")
                             
-                            if let firstElement = mainScreenController.stores.first {
-                                withAnimation {
-                                    mainScreenController.stores.removeFirst()
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            DispatchQueue.main.async {
+                                if let firstElement = mainScreenController.stores.first {
                                     withAnimation {
-                                        mainScreenController.stores.append(firstElement)
-                                        if let first = mainScreenController.stores.first {
-                                            mainScreenController.selectStore(store: first)
-                                        }
+                                        self.trigerred = true
                                         self.dragOffset = 0
-                                        print(mainScreenController.stores.count)
+                                    }
+                                    if let first = mainScreenController.stores.first {
+                                        mainScreenController.selectStore(store: first)
+                                    }
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        mainScreenController.stores.removeFirst()
+                                        mainScreenController.stores.append(firstElement)   
+                                        self.trigerred = false
                                     }
                                 }
                             }
+                            
                         }
                     })
             }
@@ -160,5 +145,16 @@ struct StoresStack : View {
         //                StoreBox(id: 2)
         //            ]
         //        }
+        .background(
+            NavigationLink(isActive: $mainScreenController.navigateToStoreDetails, destination: {
+                if let store = mainScreenController.selectedStore {
+                    StoreDetails(store: store)
+                } else {
+                    Text("Oops. Something went wrong...")
+                }
+            }) {
+                EmptyView()
+            }
+        )
     }
 }

@@ -37,7 +37,7 @@ struct MapView: View {
             
             if mainScreenController.selectedStore != nil {
                 StoresStack()
-//                StoreStack()
+//                CardStackView()
             }
         }
         .edgesIgnoringSafeArea(.all)

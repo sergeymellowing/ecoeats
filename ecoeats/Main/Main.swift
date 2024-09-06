@@ -51,17 +51,18 @@ struct Main: View {
                         
                         Spacer()
                         // TODO: Implement custon picker
-                        Picker("", selection: $mainScreenController.state) {
-                            ForEach(MainState.allCases) {
-                                Image("ic-\($0.description)")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 24, height: 24)
-//                                Text($0.description)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .frame(width: UIScreen.main.bounds.width / 3, height: 50)
+                        CustomSegmentedControl(selection: $mainScreenController.state, segmentLabels: ["ic-map", "ic-list"])
+//                        Picker("", selection: $mainScreenController.state) {
+//                            ForEach(MainState.allCases) {
+//                                Image("ic-\($0.description)")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(width: 24, height: 24)
+////                                Text($0.description)
+//                            }
+//                        }
+//                        .pickerStyle(.segmented)
+//                        .frame(width: UIScreen.main.bounds.width / 3, height: 50)
                         
                         
                         Spacer()
@@ -100,14 +101,11 @@ struct Main: View {
             
         }
 //        .edgesIgnoringSafeArea(.bottom)
-        .overlay(
-            mainScreenController.selectedItem != nil ?
-            
-                ItemDetails().transition(.move(edge: .bottom))
-            
-                
-            : nil
-        )
+//        .overlay(
+//            mainScreenController.selectedItem != nil ?
+//                ItemDetails().transition(.move(edge: .bottom))
+//            : nil
+//        )
         .onAppear {
             DataController().getStores(lookAround: appController.apiUser == nil) { stores in
                 if let stores {

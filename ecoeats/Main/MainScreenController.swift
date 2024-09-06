@@ -15,6 +15,7 @@ class MainScreenController: ObservableObject {
     @Published var selectedStore: Store?
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.55, longitude: 126.99), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     @Published var selectedItem: Item? = nil
+    @Published var navigateToStoreDetails: Bool = false
     
     func setRegion(lat: Double, lng: Double, delta: Double? = nil) {
         self.region = MKCoordinateRegion(
@@ -28,7 +29,7 @@ class MainScreenController: ObservableObject {
     //                    let delta = mainScreenController.region.span.longitudeDelta < 0.1 ? mainScreenController.region.span.latitudeDelta : nil
             withAnimation {
                 self.selectedStore = store
-                self.setRegion(lat: store.location.latitude, lng: store.location.longitude, delta: delta)
+                self.setRegion(lat: store.location.latitude - 0.01, lng: store.location.longitude, delta: delta)
                 print(self.selectedStore?.storeName)
                 if self.stores.first?.id != store.id {
                     self.stores.removeAll(where: { $0.id == store.id })

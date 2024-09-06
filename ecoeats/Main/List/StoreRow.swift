@@ -9,6 +9,7 @@ import SwiftUI
 import CachedAsyncImage
 
 struct StoreRow: View {
+    @EnvironmentObject var mainScreenController: MainScreenController
     let store: Store
     
     var body: some View {
@@ -84,9 +85,29 @@ struct StoreRow: View {
                 .padding(.horizontal, 10)
             }
             .padding(.bottom, 20)
+            .onTapGesture {
+                mainScreenController.selectedStore = store
+                mainScreenController.navigateToStoreDetails = true
+            }
+            .background(
+                NavigationLink(isActive: $mainScreenController.navigateToStoreDetails, destination: {
+                        StoreDetails(store: store)
+                }) {
+                    EmptyView()
+                }
+            )
             
             ForEach(store.items) { item in
                 ItemRow(item: item)
+                    .onTapGesture {
+                        mainScreenController.selectedStore = store
+                        mainScreenController.navigateToStoreDetails = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            withAnimation {
+                                mainScreenController.selectedItem = item
+                            }
+                        }
+                    }
             }
             .padding(.horizontal, 10)
         }

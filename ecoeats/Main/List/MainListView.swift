@@ -40,19 +40,17 @@ struct MainListView: View {
             Divider()
                 .padding(.top, 17)
                 
-            
-            
                 ScrollView(showsIndicators: false) {
                     ForEach(mainScreenController.stores) { store in
                     //            List(mainScreenController.stores) { store in
-                    NavigationLink(destination: {
-                        StoreDetails(store: store)
-                    }) {
+                        
+                    
                         StoreRow(store: store)
                             .padding(.bottom, 20)
                             .padding(.top, 30)
-                    }
+                            
                 }
+                    
             }.refreshable(action: {
                 withAnimation {
                     mainScreenController.stores = []
