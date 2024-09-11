@@ -42,7 +42,7 @@ struct MapView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .onAppear {
-            if let lat = locationManager.lastLocation?.coordinate.latitude, let lng = locationManager.lastLocation?.coordinate.longitude {
+            if let lat = locationManager.lastLocation?.coordinate.latitude, let lng = locationManager.lastLocation?.coordinate.longitude, mainScreenController.selectedStore == nil {
                 withAnimation {
                     mainScreenController.setRegion(lat: lat, lng: lng, delta: 0.1)
                 }

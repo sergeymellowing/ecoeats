@@ -40,3 +40,11 @@ struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
+
+extension UINavigationController {
+    // MARK: Allows to Swipe to go back for Navigation View even when stock Back Button is hidden
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = nil
+    }
+}

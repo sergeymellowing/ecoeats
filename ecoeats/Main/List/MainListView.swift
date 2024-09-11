@@ -25,14 +25,14 @@ struct MainListView: View {
                 .font(.system(size: 16,weight: .semibold))
                 
                 Spacer()
-                Button(action: {}) {
-                    HStack {
-                        Text("추천순")
-                        Image(systemName: "chevron.down")
-                    }
-                    .foregroundColor(.black)
-                    .font(.system(size: 16,weight: .medium))
-                }
+//                Button(action: {}) {
+//                    HStack {
+//                        Text("추천순")
+//                        Image(systemName: "chevron.down")
+//                    }
+//                    .foregroundColor(.black)
+//                    .font(.system(size: 16,weight: .medium))
+//                }
                 
             }
             .padding(.horizontal, 10)

@@ -118,14 +118,15 @@ struct StoresStack : View {
                                         self.trigerred = true
                                         self.dragOffset = 0
                                     }
-                                    if let first = mainScreenController.stores.first {
-                                        mainScreenController.selectStore(store: first)
-                                    }
+                                    
                                     
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                         mainScreenController.stores.removeFirst()
-                                        mainScreenController.stores.append(firstElement)   
+                                        mainScreenController.stores.append(firstElement)
                                         self.trigerred = false
+                                        if let first = mainScreenController.stores.first {
+                                            mainScreenController.selectStore(store: first)
+                                        }
                                     }
                                 }
                             }

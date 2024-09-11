@@ -7,16 +7,18 @@
 
 import SwiftUI
 import CachedAsyncImage
+import CoreLocation
 
 struct StoreRow: View {
     @EnvironmentObject var mainScreenController: MainScreenController
+    @EnvironmentObject var locationManager: LocationManager
     let store: Store
     
     var body: some View {
         VStack {
             ZStack(alignment: .bottom) {
                 CachedAsyncImage(
-                    url: "https://picsum.photos/200/300",
+                    url: "https://www.koreavisit.kr/wp-content/uploads/2024/05/indulge-in-korean-bakery-delights-must-visit-spots.webp",
                     placeholder: { progress in
                         // Create any view for placeholder (optional).
                         ZStack {
@@ -72,15 +74,16 @@ struct StoreRow: View {
                         .cornerRadius(8)
                         .padding(.trailing, 5)
                         .padding(.bottom, 10)
-                    
-                    Text("1.3 km")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(.green100)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 5)
-                        .background(.green900)
-                        .cornerRadius(8)
-                        .padding(.bottom, 10)
+                    if let current = locationManager.lastLocation?.coordinate {
+                        Text(getDistance(cor1: store.location, cor2: current))
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(.green100)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 5)
+                            .background(.green900)
+                            .cornerRadius(8)
+                            .padding(.bottom, 10)
+                    }
                 }
                 .padding(.horizontal, 10)
             }

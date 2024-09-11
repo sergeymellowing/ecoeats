@@ -14,7 +14,7 @@ struct ItemRow: View {
     var body: some View {
         HStack(alignment: .center) {
             CachedAsyncImage(
-                url: "https://picsum.photos/200/300",
+                url: "https://sallysbakingaddiction.com/wp-content/uploads/2013/05/classic-chocolate-chip-cookies.jpg",
                 placeholder: { progress in
                     // Create any view for placeholder (optional).
                     ZStack {

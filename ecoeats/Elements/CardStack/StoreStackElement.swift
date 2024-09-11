@@ -9,6 +9,7 @@ import SwiftUI
 import CachedAsyncImage
 
 struct StoreStackElement: View {
+    @EnvironmentObject var locationManager: LocationManager
     let store: Store
     
     var body: some View {
@@ -50,14 +51,16 @@ struct StoreStackElement: View {
             
             VStack {
                 Spacer()
-                // TODO: DISTANCE
-                Text("24.3 km")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.green100)
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 5)
-                    .background(.green900)
-                    .cornerRadius(8)
+                
+                if let current = locationManager.lastLocation?.coordinate {
+                    Text(getDistance(cor1: store.location, cor2: current))
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.green100)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 5)
+                        .background(.green900)
+                        .cornerRadius(8)
+                }
             }
         }
         

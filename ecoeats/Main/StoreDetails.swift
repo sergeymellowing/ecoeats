@@ -88,14 +88,17 @@ struct StoreDetails: View {
                                     .padding(.trailing, 5)
                                     .padding(.bottom, 10)
                                 
-                                Text("1.3 km")
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(.green100)
-                                    .padding(.horizontal, 6)
-                                    .padding(.vertical, 5)
-                                    .background(.green900)
-                                    .cornerRadius(8)
-                                    .padding(.bottom, 10)
+                                if let current = locationManager.lastLocation?.coordinate {
+                                    Text(getDistance(cor1: store.location, cor2: current))
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundColor(.green100)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 5)
+                                        .background(.green900)
+                                        .cornerRadius(8)
+                                        .padding(.bottom, 10)
+                                }
+                                
                             }
                             .padding(.bottom,20)
                             
