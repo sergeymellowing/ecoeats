@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B1A579D2C7DFF86006C0BA6 /* ItemsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */; };
 		2BD5D0302C8B1B5B001131A6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5D02F2C8B1B5B001131A6 /* CustomSegmentedControl.swift */; };
+		2BD5D0322C919211001131A6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5D0312C919211001131A6 /* LaunchScreen.swift */; };
 		2BD7BF282C85B37600FCB257 /* BlurButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF272C85B37600FCB257 /* BlurButton.swift */; };
 		2BD7BF2A2C85CB0E00FCB257 /* BackgroundClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF292C85CB0E00FCB257 /* BackgroundClearView.swift */; };
 		2BD7BF2E2C89975700FCB257 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF2D2C89975700FCB257 /* TestView.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsStack.swift; sourceTree = "<group>"; };
 		2BD5D02F2C8B1B5B001131A6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		2BD5D0312C919211001131A6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		2BD7BF252C85B05A00FCB257 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BD7BF272C85B37600FCB257 /* BlurButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurButton.swift; sourceTree = "<group>"; };
 		2BD7BF292C85CB0E00FCB257 /* BackgroundClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundClearView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				85891C352C61F8A90039380F /* Assets.xcassets */,
 				85891C372C61F8A90039380F /* Preview Content */,
 				85891C432C61FB1E0039380F /* Launch Screen.storyboard */,
+				2BD5D0312C919211001131A6 /* LaunchScreen.swift */,
 				85D28E3E2C635CF0008D5F15 /* amplifyconfiguration.json */,
 				2BD7BF2D2C89975700FCB257 /* TestView.swift */,
 			);
@@ -395,6 +398,7 @@
 			files = (
 				85891C582C62005D0039380F /* MainState.swift in Sources */,
 				2B1A579D2C7DFF86006C0BA6 /* ItemsStack.swift in Sources */,
+				2BD5D0322C919211001131A6 /* LaunchScreen.swift in Sources */,
 				85D640C72C747BD900E0572A /* ApiUser.swift in Sources */,
 				85891C4C2C61FC620039380F /* Settings.swift in Sources */,
 				8553E1052C6F034300C56635 /* LocationManager.swift in Sources */,

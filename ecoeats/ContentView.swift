@@ -23,6 +23,8 @@ struct ContentView: View {
                 Main()
             case .isAdmin:
                 ScannerView()
+            case .initial:
+                LaunchScreen()
             }
         }
         .environmentObject(appController)

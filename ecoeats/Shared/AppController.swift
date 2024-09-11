@@ -11,7 +11,7 @@ import SwiftUI
 import AWSCognitoAuthPlugin
 
 class AppController: ObservableObject {
-    @Published var appState: AppState = .onboarding
+    @Published var appState: AppState = .initial
     @Published var isLoading: Bool = false
     @Published var apiUser: ApiUser? = nil
     
