@@ -18,7 +18,7 @@ struct StoreRow: View {
         VStack {
             ZStack(alignment: .bottom) {
                 CachedAsyncImage(
-                    url: "https://www.koreavisit.kr/wp-content/uploads/2024/05/indulge-in-korean-bakery-delights-must-visit-spots.webp",
+                    url: "https://picsum.photos/200/300",
                     placeholder: { progress in
                         // Create any view for placeholder (optional).
                         ZStack {

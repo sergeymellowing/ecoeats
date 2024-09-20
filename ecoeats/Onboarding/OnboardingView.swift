@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
+    @EnvironmentObject var appController: AppController
     let index: Int
+    @Binding var currentTabIndex: Int
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -40,7 +43,10 @@ struct OnboardingView: View {
                     .multilineTextAlignment(index == 4 ? .leading : .center)
                     .padding(.bottom, 30)
                 
-                Button(action: {}) {
+                Button(action: {
+                    isAppOnboarded = true
+                    self.appController.getCurrentAuthSession()
+                }) {
                     Text("건너뛰기")
                         .font(.system(size: 14))
                         .underline()
@@ -49,17 +55,34 @@ struct OnboardingView: View {
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    Text("다음")
+                Button(action: {
+                    withAnimation {
+                        if self.currentTabIndex == 4 {
+                            isAppOnboarded = true
+                            self.appController.getCurrentAuthSession()
+                        } else {
+                            self.currentTabIndex = self.currentTabIndex + 1
+                        }
+                        
+                    }
+                }) {
+                    Text(index == 4 ? "시작하기" : "다음")
                         .font(.system(size: 18))
-                        .foregroundColor(.green100)
-                        .frame(width: 140, height: 58)
+                        .foregroundColor(index == 4 ? .black : .green100)
+                        .frame(width: index == 4 ? (UIScreen.main.bounds.width - 40) : 140, height: 58)
                         .overlay(
+                            index != 4 ?
                             RoundedRectangle(cornerRadius: 14)
                                 .stroke(.green100, lineWidth: 1)
+                            : nil
                         )
+                        .background(index == 4 ? .green100 : .clear)
+                        .cornerRadius(14)
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding(.bottom, 15)
+                .padding(.horizontal, 20)
+                
             }
         }
     }

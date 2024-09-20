@@ -28,7 +28,7 @@ struct Onboarding: View {
                 
                 TabView(selection: $currentTabIndex) {
                     ForEach(0..<5) { index in
-                        OnboardingView(index: index)
+                        OnboardingView(index: index, currentTabIndex: $currentTabIndex)
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))

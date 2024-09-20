@@ -30,7 +30,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         configureAmplify()
         setupUI()
         
-        self.isAppOnboarded = false
+//        self.isAppOnboarded = false
         return true
     }
     
