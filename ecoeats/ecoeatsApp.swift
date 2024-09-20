@@ -14,6 +14,7 @@ import AWSAPIPlugin
 struct ecoeatsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -22,10 +23,14 @@ struct ecoeatsApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         configureAmplify()
         setupUI()
+        
+        self.isAppOnboarded = false
         return true
     }
     
