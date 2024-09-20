@@ -16,6 +16,7 @@ class MainScreenController: ObservableObject {
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.55, longitude: 126.99), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     @Published var selectedItem: Item? = nil
     @Published var navigateToStoreDetails: Bool = false
+    @Published var sideMenu: Bool = false
     
     func setRegion(lat: Double, lng: Double, delta: Double? = nil) {
         self.region = MKCoordinateRegion(

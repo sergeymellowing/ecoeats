@@ -27,7 +27,12 @@ class AppController: ObservableObject {
                     if session.isSignedIn {
                         syncAuthAndApiUser { success in
 //                            self.lookAround = false
-                            self.appState = self.apiUser?.isAdmin ?? false ? .isAdmin : .main
+                            if self.apiUser?.isAdmin ?? false {
+                                self.appState = .isAdmin
+                            } else {
+                                self.appState = .main
+                            }
+                            
                             self.isLoading = false
                         }
                     } else {

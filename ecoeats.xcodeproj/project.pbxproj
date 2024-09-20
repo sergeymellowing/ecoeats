@@ -16,6 +16,8 @@
 		2BD7BF2E2C89975700FCB257 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF2D2C89975700FCB257 /* TestView.swift */; };
 		2BD7BF312C89A5C900FCB257 /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF302C89A5C900FCB257 /* CardStackView.swift */; };
 		2BD7BF332C89A7B900FCB257 /* StoreStackElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BF322C89A7B900FCB257 /* StoreStackElement.swift */; };
+		2BF1AF9A2C9D3DC000A6C077 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1AF992C9D3DC000A6C077 /* SideMenu.swift */; };
+		2BF1AF9D2C9D428400A6C077 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1AF9C2C9D428400A6C077 /* MyAccount.swift */; };
 		854864362C7C3F9F00AE2D19 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864352C7C3F9F00AE2D19 /* Extensions.swift */; };
 		8548643F2C7C6BE000AE2D19 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */; };
 		854864412C7C6CDA00AE2D19 /* StoresStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854864402C7C6CDA00AE2D19 /* StoresStack.swift */; };
@@ -76,6 +78,8 @@
 		2BD7BF2D2C89975700FCB257 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		2BD7BF302C89A5C900FCB257 /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		2BD7BF322C89A7B900FCB257 /* StoreStackElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreStackElement.swift; sourceTree = "<group>"; };
+		2BF1AF992C9D3DC000A6C077 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		2BF1AF9C2C9D428400A6C077 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
 		854864352C7C3F9F00AE2D19 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8548643E2C7C6BDF00AE2D19 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		854864402C7C6CDA00AE2D19 /* StoresStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresStack.swift; sourceTree = "<group>"; };
@@ -166,6 +170,15 @@
 			path = CardStack;
 			sourceTree = "<group>";
 		};
+		2BF1AF9B2C9D426100A6C077 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				2BF1AF992C9D3DC000A6C077 /* SideMenu.swift */,
+				2BF1AF9C2C9D428400A6C077 /* MyAccount.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		8553E1062C6F03A300C56635 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +217,7 @@
 				85891C3F2C61FA9D0039380F /* Onboarding */,
 				85891C402C61FAA50039380F /* SignIn */,
 				85891C412C61FAAE0039380F /* Main */,
+				2BF1AF9B2C9D426100A6C077 /* SideMenu */,
 				85891C422C61FAC00039380F /* Settings */,
 				85891C502C61FD320039380F /* Shared */,
 				8553E1062C6F03A300C56635 /* Elements */,
@@ -420,6 +434,7 @@
 				2BD7BF332C89A7B900FCB257 /* StoreStackElement.swift in Sources */,
 				854864412C7C6CDA00AE2D19 /* StoresStack.swift in Sources */,
 				2BD5D0362C9D0AB9001131A6 /* OnboardingView.swift in Sources */,
+				2BF1AF9A2C9D3DC000A6C077 /* SideMenu.swift in Sources */,
 				85D640C52C747BB300E0572A /* ApiResult.swift in Sources */,
 				8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */,
 				85D640C92C7491B700E0572A /* AccountView.swift in Sources */,
@@ -443,6 +458,7 @@
 				8553E0FF2C6EF27800C56635 /* ItemRow.swift in Sources */,
 				2BD7BF2E2C89975700FCB257 /* TestView.swift in Sources */,
 				85D640CB2C75BC3100E0572A /* ScanQRRequest.swift in Sources */,
+				2BF1AF9D2C9D428400A6C077 /* MyAccount.swift in Sources */,
 				85891C542C6200090039380F /* MapView.swift in Sources */,
 				85891C482C61FC450039380F /* SignIn.swift in Sources */,
 			);
