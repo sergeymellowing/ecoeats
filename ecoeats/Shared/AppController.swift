@@ -58,6 +58,7 @@ class AppController: ObservableObject {
             }
         } else {
             self.appState = .onboarding
+            self.isLoading = false
         }
     }
     

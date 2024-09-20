@@ -36,7 +36,7 @@ struct OnboardingView: View {
                     .frame(width: 247, height: 238)
                     .padding(.bottom, 40)
                 
-                Text(description)
+                description
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                     .lineSpacing(7)
@@ -63,10 +63,15 @@ struct OnboardingView: View {
                         } else {
                             self.currentTabIndex = self.currentTabIndex + 1
                         }
-                        
                     }
                 }) {
-                    Text(index == 4 ? "시작하기" : "다음")
+                    Group {
+                        if appController.isLoading {
+                            ProgressView().tint(.black)
+                        } else {
+                            Text(index == 4 ? "시작하기" : "다음")
+                        }
+                    }
                         .font(.system(size: 18))
                         .foregroundColor(index == 4 ? .black : .green100)
                         .frame(width: index == 4 ? (UIScreen.main.bounds.width - 40) : 140, height: 58)
@@ -98,14 +103,43 @@ struct OnboardingView: View {
         }
     }
     
-    var description: String {
+    @ViewBuilder
+    var description: some View {
         switch index {
-        case 0: "맛있는 음식을  반값에 득템\n당신 근처에서 기다리고 있어요!"
-        case 1: "낭비되는 음식만 줄여도\n탄소배출 을 줄일 수 있어요!"
-        case 2: "ECO EATS로 환경보호를 실천하는\n착한 주변 맛집 을 찾아보세요!"
-        case 3: "원하는 맛집의 메뉴가 있다면\n이제부터는 선착순!\n앱의 QR 을 보여주고 할인을 받으세요!"
-        case 4: "원하는 메뉴가 모두 소진되었나요?\n해당 가게를 팔로우 하고\n할인 소식 을 먼저 받으세요!"
-        default: "매일의 할인가"
+        case 0: 
+            Group {
+                Text("맛있는 음식을  ") +
+                Text("반값에 득템\n").bold().foregroundColor(.yellow200) + 
+                Text("당신 근처에서 기다리고 있어요!")
+            }
+        case 1:
+            Group {
+                Text("낭비되는 음식만 줄여도\n") +
+                Text("탄소배출 ").bold().foregroundColor(.yellow200) +
+                Text("을 줄일 수 있어요!")
+            }
+        case 2:
+            Group {
+                Text("ECO EATS로 환경보호를 실천하는\n") +
+                Text("착한 주변 맛집 ").bold().foregroundColor(.yellow200) +
+                Text("을 찾아보세요!")
+            }
+        case 3:
+            Group {
+                Text("원하는 맛집의 메뉴가 있다면\n이제부터는 ") +
+                Text("선착순!\n앱의 QR ").bold().foregroundColor(.yellow200) +
+                Text("을 보여주고 할인을 받으세요!")
+            }
+        case 4:
+            Group {
+                Text("원하는 메뉴가 모두 소진되었나요?\n해당 가게를 ") +
+                Text("팔로우 ").bold().foregroundColor(.yellow200) +
+                Text("하고\n") +
+                Text("할인 소식 ").bold().foregroundColor(.yellow200) +
+                Text("을 먼저 받으세요!")
+            }
+        default:
+            Text("Something went wrong ...")
         }
     }
 }
