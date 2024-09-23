@@ -64,26 +64,26 @@ struct SideMenu: View {
                         Text("내 계정")
                     }
                     
-                    Button(action: {
-                        
+                    NavigationLink(destination: {
+                        FollowingView()
                     }) {
                         Text("팔로우하는 가게")
                     }
                     
-                    Button(action: {
-                        
+                    NavigationLink(destination: {
+                        AboutView()
                     }) {
                         Text("ECO EATS 소개")
                     }
                     
-                    Button(action: {
-                        
+                    NavigationLink(destination: {
+                        TermsView()
                     }) {
                         Text("약관")
                     }
                     
-                    Button(action: {
-                        
+                    NavigationLink(destination: {
+                        PrivacyPolicyView()
                     }) {
                         Text("개인정보 처리방침")
                     }

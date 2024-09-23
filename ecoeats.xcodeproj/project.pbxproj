@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B1A579D2C7DFF86006C0BA6 /* ItemsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */; };
+		2BA117AC2CA122CC0021CB34 /* FollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA117AB2CA122CC0021CB34 /* FollowingView.swift */; };
+		2BA117AE2CA1265F0021CB34 /* FollowingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA117AD2CA1265E0021CB34 /* FollowingRow.swift */; };
+		2BA117B02CA1296A0021CB34 /* SideMenuItemNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA117AF2CA1296A0021CB34 /* SideMenuItemNavi.swift */; };
+		2BA117B22CA12A2A0021CB34 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA117B12CA12A2A0021CB34 /* TermsView.swift */; };
+		2BA117B42CA12C090021CB34 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA117B32CA12C090021CB34 /* PrivacyPolicyView.swift */; };
+		2BA117B62CA12C5B0021CB34 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA117B52CA12C5B0021CB34 /* AboutView.swift */; };
 		2BD5D0302C8B1B5B001131A6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5D02F2C8B1B5B001131A6 /* CustomSegmentedControl.swift */; };
 		2BD5D0322C919211001131A6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5D0312C919211001131A6 /* LaunchScreen.swift */; };
 		2BD5D0362C9D0AB9001131A6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5D0352C9D0AB9001131A6 /* OnboardingView.swift */; };
@@ -69,6 +75,12 @@
 
 /* Begin PBXFileReference section */
 		2B1A579C2C7DFF86006C0BA6 /* ItemsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsStack.swift; sourceTree = "<group>"; };
+		2BA117AB2CA122CC0021CB34 /* FollowingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingView.swift; sourceTree = "<group>"; };
+		2BA117AD2CA1265E0021CB34 /* FollowingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingRow.swift; sourceTree = "<group>"; };
+		2BA117AF2CA1296A0021CB34 /* SideMenuItemNavi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemNavi.swift; sourceTree = "<group>"; };
+		2BA117B12CA12A2A0021CB34 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		2BA117B32CA12C090021CB34 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		2BA117B52CA12C5B0021CB34 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2BD5D02F2C8B1B5B001131A6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		2BD5D0312C919211001131A6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		2BD5D0352C9D0AB9001131A6 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -175,6 +187,12 @@
 			children = (
 				2BF1AF992C9D3DC000A6C077 /* SideMenu.swift */,
 				2BF1AF9C2C9D428400A6C077 /* MyAccount.swift */,
+				2BA117AB2CA122CC0021CB34 /* FollowingView.swift */,
+				2BA117AD2CA1265E0021CB34 /* FollowingRow.swift */,
+				2BA117AF2CA1296A0021CB34 /* SideMenuItemNavi.swift */,
+				2BA117B12CA12A2A0021CB34 /* TermsView.swift */,
+				2BA117B32CA12C090021CB34 /* PrivacyPolicyView.swift */,
+				2BA117B52CA12C5B0021CB34 /* AboutView.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -418,6 +436,7 @@
 				2BD5D0322C919211001131A6 /* LaunchScreen.swift in Sources */,
 				85D640C72C747BD900E0572A /* ApiUser.swift in Sources */,
 				85891C4C2C61FC620039380F /* Settings.swift in Sources */,
+				2BA117AC2CA122CC0021CB34 /* FollowingView.swift in Sources */,
 				8553E1052C6F034300C56635 /* LocationManager.swift in Sources */,
 				85891C4A2C61FC560039380F /* Main.swift in Sources */,
 				85891C612C6340CF0039380F /* TestData.swift in Sources */,
@@ -434,10 +453,12 @@
 				2BD7BF332C89A7B900FCB257 /* StoreStackElement.swift in Sources */,
 				854864412C7C6CDA00AE2D19 /* StoresStack.swift in Sources */,
 				2BD5D0362C9D0AB9001131A6 /* OnboardingView.swift in Sources */,
+				2BA117B62CA12C5B0021CB34 /* AboutView.swift in Sources */,
 				2BF1AF9A2C9D3DC000A6C077 /* SideMenu.swift in Sources */,
 				85D640C52C747BB300E0572A /* ApiResult.swift in Sources */,
 				8553E0FB2C6EE57100C56635 /* StoreDetails.swift in Sources */,
 				85D640C92C7491B700E0572A /* AccountView.swift in Sources */,
+				2BA117AE2CA1265F0021CB34 /* FollowingRow.swift in Sources */,
 				2BD7BF2A2C85CB0E00FCB257 /* BackgroundClearView.swift in Sources */,
 				8553E1032C6EFA4000C56635 /* ItemDetails.swift in Sources */,
 				85D640BF2C7474F600E0572A /* CodeScanner.swift in Sources */,
@@ -450,6 +471,7 @@
 				85D28E472C64978F008D5F15 /* JsonHelper.swift in Sources */,
 				85891C5C2C633ED40039380F /* Store.swift in Sources */,
 				85891C342C61F8A70039380F /* ContentView.swift in Sources */,
+				2BA117B02CA1296A0021CB34 /* SideMenuItemNavi.swift in Sources */,
 				85D28E412C636009008D5F15 /* Defaults.swift in Sources */,
 				85891C5A2C633EA80039380F /* User.swift in Sources */,
 				85891C322C61F8A70039380F /* ecoeatsApp.swift in Sources */,
@@ -458,8 +480,10 @@
 				8553E0FF2C6EF27800C56635 /* ItemRow.swift in Sources */,
 				2BD7BF2E2C89975700FCB257 /* TestView.swift in Sources */,
 				85D640CB2C75BC3100E0572A /* ScanQRRequest.swift in Sources */,
+				2BA117B22CA12A2A0021CB34 /* TermsView.swift in Sources */,
 				2BF1AF9D2C9D428400A6C077 /* MyAccount.swift in Sources */,
 				85891C542C6200090039380F /* MapView.swift in Sources */,
+				2BA117B42CA12C090021CB34 /* PrivacyPolicyView.swift in Sources */,
 				85891C482C61FC450039380F /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
