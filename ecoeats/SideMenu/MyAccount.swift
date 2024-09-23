@@ -117,7 +117,9 @@ struct MyAccount: View {
                         .padding(.bottom, 30)
                     
                     HStack {
-                        Button(action: {}) {
+                        Button(action: {
+                            appController.signOut()
+                        }) {
                             Text("회원탈퇴")
                                 .foregroundColor(.black)
                         }

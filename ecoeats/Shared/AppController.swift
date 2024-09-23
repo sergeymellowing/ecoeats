@@ -149,7 +149,7 @@ class AppController: ObservableObject {
             _ = await Amplify.Auth.signOut()
             print("Sign out succeeded")
             self.apiUser = nil
-            self.appState = .signin
+//            self.appState = .signin
         }
     }
     

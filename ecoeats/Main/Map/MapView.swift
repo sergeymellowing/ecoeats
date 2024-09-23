@@ -35,7 +35,7 @@ struct MapView: View {
                 mainScreenController.deSelectStore()
             }
             
-            if mainScreenController.selectedStore != nil {
+            if mainScreenController.selectedStore != nil && !mainScreenController.sideMenu {
                 StoresStack()
 //                CardStackView()
             }

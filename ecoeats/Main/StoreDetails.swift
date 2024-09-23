@@ -184,11 +184,11 @@ struct StoreDetails: View {
                             ForEach(store.items) { item in
                                 ItemRow(item: item)
                                     .onTapGesture {
-                                        if appController.apiUser != nil {
+//                                        if appController.apiUser != nil {
                                             withAnimation {
                                                 mainScreenController.selectedItem = item
                                             }
-                                        }
+//                                        }
                                     }
                                 Divider()
                             }

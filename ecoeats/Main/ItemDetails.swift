@@ -25,7 +25,7 @@ struct ItemDetails: View {
 //    let store: Store
     
     var body: some View {
-        if let item = mainScreenController.selectedItem {
+        if let item = mainScreenController.selectedItem, appController.apiUser != nil {
             VStack {
                 Spacer()
                 VStack(alignment: .center, spacing: 20) {
@@ -204,6 +204,101 @@ struct ItemDetails: View {
                     .offset(y: -130/2)
                 }
                 
+            }
+            .ignoresSafeArea()
+            .offset(y: self.offset)
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        if gesture.translation.height > 0 {
+                            self.offset = gesture.translation.height
+                        }
+                    }
+                    .onEnded { gesture in
+                        if gesture.translation.height > 100 {
+                            withAnimation {
+                                mainScreenController.selectedItem = nil
+                            }
+                            
+                        } else {
+                            withAnimation {
+                                self.offset = 0
+                            }
+                        }
+                        
+                        
+                    }
+            )
+        } else {
+            VStack {
+                Spacer()
+                VStack(alignment: .center, spacing: 30) {
+                    Color.black.opacity(0.3)
+                        .frame(width: 36, height: 5)
+                        .cornerRadius(5)
+                        .padding(.top, 5)
+                    
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                    
+                    Text("ECO EATS")
+                        .foregroundColor(.white)
+                        .font(.system(size: 30, weight: .bold))
+                    
+                    Text("특별한 혜택이 궁금하신가요?\n이제 시작해보세요")
+                        .foregroundColor(.green100)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                 
+                        Button(action: {
+                            appController.signInWithWebUI(provider: .google)
+                        }) {
+                            HStack(alignment: .center, spacing: 10) {
+                                Image("ic-google")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                Text("구글 아이디로 가입하기")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.vertical, 14)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.white)
+                            .cornerRadius(14)
+                        }
+                        
+                    Button(action: {
+                        appController.signInWithWebUI(provider: .apple)
+                    }) {
+                        HStack(alignment: .center, spacing: 10) {
+                            Image("ic-apple")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                            Text("애플 아이디로 가입하기")
+                                .font(.system(size: 18))
+                                .foregroundColor(.black)
+                        }
+                        .padding(.vertical, 14)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .cornerRadius(14)
+                    }
+                    
+                    Text("SNS 로그인을 통해 본 서비스에 가입함으로써, 귀하는 당사의 이용약관에 동의하게됩니다. 당사의 개인정보 사용방식에 관한 내용은 개인정보 취급방침에서 확인하실 수 있습니다.")
+                        .font(.system(size: 14, weight: .light))
+                        .lineSpacing(6)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.gray400)
+                        .padding(.bottom, 50)
+                }
+                .padding(.horizontal, 20)
+                .background(Color.greenMain)
+                .frame(maxWidth: .infinity)
+                .cornerRadius(30, corners: [.topLeft, .topRight])
             }
             .ignoresSafeArea()
             .offset(y: self.offset)
