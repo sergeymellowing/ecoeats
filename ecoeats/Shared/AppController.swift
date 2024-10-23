@@ -18,23 +18,28 @@ class AppController: ObservableObject {
     @AppStorage("isAppOnboarded") private var isAppOnboarded = Defaults.isAppOnboarded
 //    @AppStorage("lookAround") private var lookAround = Defaults.lookAround
     
+    @MainActor
     func getCurrentAuthSession() {
         isLoading = true
         if isAppOnboarded {
             Task {
                 do {
                     let session = try await Amplify.Auth.fetchAuthSession()
+                   
                     if session.isSignedIn {
-                        syncAuthAndApiUser { success in
-//                            self.lookAround = false
-                            if self.apiUser?.isAdmin ?? false {
-                                self.appState = .isAdmin
-                            } else {
-                                self.appState = .main
+                        DispatchQueue.main.async {
+                            self.syncAuthAndApiUser { success in
+    //                            self.lookAround = false
+                                if self.apiUser?.isAdmin ?? false {
+                                    self.appState = .isAdmin
+                                } else {
+                                    self.appState = .main
+                                }
+                                
+                                self.isLoading = false
                             }
-                            
-                            self.isLoading = false
                         }
+                        
                     } else {
                         print("User not logged in")
                         await MainActor.run {
@@ -49,16 +54,22 @@ class AppController: ObservableObject {
                         }
                     }
                 } catch let error as AuthError {
-                    isLoading = false
-                    print("Sign in failed \(error)")
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        print("Sign in failed \(error)")
+                    }
                 } catch {
-                    isLoading = false
-                    print("Unexpected error: \(error)")
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        print("Unexpected error: \(error)")
+                    }
                 }
             }
         } else {
-            self.appState = .onboarding
-            self.isLoading = false
+            DispatchQueue.main.async {
+                self.appState = .onboarding
+                self.isLoading = false
+            }
         }
     }
     
@@ -147,9 +158,14 @@ class AppController: ObservableObject {
         Task {
             self.isLoading = true
             _ = await Amplify.Auth.signOut()
-            print("Sign out succeeded")
-            self.apiUser = nil
-//            self.appState = .signin
+            DispatchQueue.main.async {
+                print("Sign out succeeded")
+                self.isLoading = false
+                self.apiUser = nil
+                if self.appState == .isAdmin {
+                    self.appState = .signin
+                }
+            }
         }
     }
     
@@ -199,7 +215,10 @@ class AppController: ObservableObject {
                 default: print("undone")
                 }
             } catch {
-                self.getCurrentAuthSession()
+                if self.appState != .main {
+                    self.getCurrentAuthSession()
+                }
+                
                 print("Sign in failed: \(error)")
             }
             self.isLoading = false
@@ -261,6 +280,7 @@ class AppController: ObservableObject {
         }
     }
     
+    @MainActor
     func updateUser(id: String, user: ApiUser, completion: @escaping (ApiUser?) -> Void) {
         let getUserRequest = UpdateApiNodeUserRequest(id: id, item: user)
         
@@ -312,6 +332,7 @@ class AppController: ObservableObject {
         }
     }
     
+    @MainActor
     func syncAuthAndApiUser(completion: @escaping (Bool) -> Void) {
         Task {
             do {

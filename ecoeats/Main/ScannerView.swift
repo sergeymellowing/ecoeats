@@ -14,25 +14,44 @@ struct ScannerView: View {
     @State var showAlert: Bool = false
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            CodeScannerView(codeTypes: [.qr], scanMode: .once, isTorchOn: $torchIsOn, completion: handleScan)
-                .border(Color.blue)
-            
-            Spacer()
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text("QR code was successfully scanned!"))
-                }
-            
-            Button(action: { appController.signOut() }) {
-                Text("Sign out")
+        NavigationView {
+            VStack {
+                Spacer(minLength: 100)
+                
+                CodeScannerView(codeTypes: [.qr], scanMode: .once, isTorchOn: $torchIsOn, completion: handleScan)
+                    .border(Color.white)
+                
+                Spacer(minLength: 100)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("QR code was successfully scanned!"))
+                    }
+                
+//                Button(action: { appController.signOut() }) {
+//                    Text("Sign out")
+//                }
+//                .buttonStyle(.bordered)
+                
+                Spacer()
             }
-            .buttonStyle(.bordered)
-            
-            Spacer()
+            .padding(.horizontal, 22)
+            .background(Color.greenMain)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("ECO EATS")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
+                }
+            }
+            .navigationBarItems(
+                trailing: Button(action: {
+                    appController.signOut()
+                }) {
+                    Image(systemName: "door.left.hand.open")
+                        .foregroundColor(.white)
+                }
+            )
         }
-        
     }
     
     func handleScan(result: Result<ScanResult, ScanError>) {

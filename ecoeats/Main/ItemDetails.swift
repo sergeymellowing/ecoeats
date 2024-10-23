@@ -293,7 +293,17 @@ struct ItemDetails: View {
                         .lineSpacing(6)
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.gray400)
-                        .padding(.bottom, 50)
+                    
+                    NavigationLink(destination: {
+                        EmailSignIn()
+                    }) {
+                        Text("이메일 로그인")
+                            .foregroundColor(.yellow200)
+                            .font(.system(size: 16, weight: .light))
+                            .underline()
+                    }
+                    .padding(.vertical)
+                    .padding(.bottom, 50)
                 }
                 .padding(.horizontal, 20)
                 .background(Color.greenMain)

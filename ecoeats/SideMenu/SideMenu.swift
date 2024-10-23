@@ -121,6 +121,16 @@ struct SideMenu: View {
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.gray400)
                     .padding(.top, 50)
+                
+                NavigationLink(destination: {
+                    EmailSignIn()
+                }) {
+                    Text("이메일 로그인")
+                        .foregroundColor(.yellow200)
+                        .font(.system(size: 16, weight: .light))
+                        .underline()
+                }
+                .padding(.vertical)
             }
             
             
