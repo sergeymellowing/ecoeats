@@ -23,7 +23,7 @@ struct ItemsStack: View {
                 ItemStackElement(item: item)
                 //                        .opacity(currentIndex == index ? 1 : 0.5)
                 //                            .scaleEffect(currentIndex == index ? 1 : 0.8)
-                    .offset(x: CGFloat(index - currentIndex) * 300 + dragOffset)
+                    .offset(x: CGFloat(index - currentIndex) * (UIScreen.main.bounds.width * 0.8) + dragOffset)
                     .onTapGesture {
                         mainScreenController.navigateToStoreDetails = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
